@@ -1,0 +1,23 @@
+apply from: "../ui_module.gradle"
+
+android {
+
+    defaultConfig {
+
+        if (isBuildModule.toBoolean()) {
+            applicationId "com.aj.ui"
+        }
+    }
+
+
+}
+
+
+dependencies {
+
+    if (!isBuildModule.toBoolean()) {
+        implementation project(":user_module")
+    }
+
+
+}
