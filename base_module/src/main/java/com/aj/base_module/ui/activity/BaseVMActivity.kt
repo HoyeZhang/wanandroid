@@ -1,6 +1,8 @@
 package com.aj.base_module.ui.activity
 
 import android.os.Bundle
+import android.widget.Toast
+
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.aj.base_module.ui.viewmodel.BaseViewModel
@@ -24,7 +26,7 @@ abstract class BaseVMActivity : AppCompatActivity(){
                     is ErrorState -> {
                         dismissLoading()
                         stateActionState.message?.apply {
-
+                            Toast.makeText(baseContext,stateActionState.message,Toast.LENGTH_SHORT).show();
                             handleError()
                         }
                     }

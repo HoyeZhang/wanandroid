@@ -1,7 +1,7 @@
 package com.aj.user_module.apis
 
 
-import com.aj.base_module.ui.net.BaseResponse
+import com.aj.base_module.net.BaseResponse
 import com.aj.user_module.bean.LoginBean
 
 

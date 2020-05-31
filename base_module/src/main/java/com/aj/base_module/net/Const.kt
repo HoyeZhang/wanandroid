@@ -1,4 +1,4 @@
-package com.aj.base_module.ui.net
+package com.aj.base_module.net
 
 class Const {
     companion object {

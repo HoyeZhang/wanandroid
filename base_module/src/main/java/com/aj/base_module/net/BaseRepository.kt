@@ -1,6 +1,6 @@
-package com.aj.base_module.ui.net
+package com.aj.base_module.net
 
-import com.aj.base_module.ui.net.exception.ApiException
+import com.aj.base_module.net.exception.ApiException
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -9,7 +9,7 @@ import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine
 
 open class BaseRepository {
-    suspend fun <T> Call<BaseResponse<T>>.await(): T {
+    suspend fun <T> Call<BaseResponse<T>>. await(): BaseResponse<T> {
         return suspendCoroutine { continuation ->
             enqueue(object : Callback<BaseResponse<T>> {
                 override fun onFailure(call: Call<BaseResponse<T>>, t: Throwable) {
@@ -25,7 +25,7 @@ open class BaseRepository {
                         if (body.data == null){
                             body.data ="" as T
                         }
-                        continuation.resume(body.data)
+                        continuation.resume(body)
                     }
                 }
             })

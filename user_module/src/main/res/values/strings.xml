@@ -1,3 +1,5 @@
-<resources>
-    <string name="app_name">user_module</string>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name" tools:ignore="ResourceName">user_module</string>
+    <string name="user_account">账号</string>
+    <string name="user_password">密码</string>
 </resources>
