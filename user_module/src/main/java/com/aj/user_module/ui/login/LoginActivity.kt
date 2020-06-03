@@ -7,6 +7,7 @@ import com.aj.base_module.ui.viewmodel.BaseViewModel
 import com.aj.base_module.ui.viewmodel.initViewModel
 import com.aj.user_module.R
 import com.aj.user_module.databinding.UserActivityLoginBinding
+import com.alibaba.android.arouter.launcher.ARouter
 import kotlinx.android.synthetic.main.user_activity_login.*
 
 /**
@@ -28,7 +29,6 @@ class LoginActivity : BaseDataBindVMActivity<UserActivityLoginBinding>() {
     }
 
     override fun initView() {
-
         mViewModel.loginBean.observe(this, Observer { loginBean ->
             if (loginBean != null) {
                 finish()

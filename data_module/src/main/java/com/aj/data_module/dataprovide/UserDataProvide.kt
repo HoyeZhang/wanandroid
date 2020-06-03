@@ -13,9 +13,9 @@ class UserDataProvide {
     var userDao =  AppDataBase.getDBInstace().userDao()
     fun addUser(username : String,password :String){
 
-        var user =User(1,"d");
-        userDao?.insertAll(user);
-        userDao?.getAll().toString();
+        var user =User(1,"d")
+        userDao?.insertAll(user)
+        userDao?.getAll().toString()
 
     }
 }

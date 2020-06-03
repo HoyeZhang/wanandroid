@@ -16,10 +16,15 @@ android {
         enabled true
     }
 
+    kapt {
+        arguments {
+            arg("AROUTER_MODULE_NAME", project.getName())
+        }
+    }
+
+
 }
 
 dependencies {
-
-    implementation project(":data_module")
 
 }

@@ -1,24 +1,28 @@
 package com.aj.user_module.ui.login
 
-import android.content.Context
-import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import com.aj.base_module.ui.viewmodel.BaseViewModel
-import com.aj.data_module.database.AppDataBase
-import com.aj.data_module.dataprovide.UserDataProvide
+import com.aj.data_service.Service.UserService
 import com.aj.user_module.bean.LoginBean
+import com.alibaba.android.arouter.facade.annotation.Autowired
+import com.alibaba.android.arouter.launcher.ARouter
+
 
 class LoginViewModel(private val repository: LoginRepository) : BaseViewModel() {
     var loginBean = MutableLiveData<LoginBean>()
 
+
+    @Autowired(name = "/dataservice/user")
+    @JvmField
+     var userService : UserService? = null;
+
     fun login(username: String, password: String) {
+        ARouter.getInstance().inject(this);
         launch {
             loginBean.value = repository.login(username, password).data
-            Log.d("dfa",loginBean.toString())
 
-            var userdao = UserDataProvide();
-            userdao.addUser("dfa","dad");
+            userService?.addUser("daada")
+
         }
     }
 }
