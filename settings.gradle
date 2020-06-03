@@ -1,2 +1,2 @@
-include ':app', ':base_module', ':ui', ':user_module'
+include ':app', ':base_module', ':ui', ':user_module', ':data_module'
 rootProject.name='wanandroid'
