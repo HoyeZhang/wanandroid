@@ -8,6 +8,6 @@ import com.alibaba.android.arouter.facade.template.IProvider
  */
 
 interface UserService : IProvider {
-   fun addUser(userJson :String)
+   fun addUser(userName :String,password:String)
 
 }

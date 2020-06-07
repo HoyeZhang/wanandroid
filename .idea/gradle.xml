@@ -11,6 +11,7 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/base_module" />
             <option value="$PROJECT_DIR$/data_module" />
+            <option value="$PROJECT_DIR$/data_service" />
             <option value="$PROJECT_DIR$/ui" />
             <option value="$PROJECT_DIR$/user_module" />
           </set>

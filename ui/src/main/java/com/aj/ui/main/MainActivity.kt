@@ -11,14 +11,15 @@ import com.aj.ui.R
 import com.aj.base_module.ui.activity.BaseDataBindVMActivity
 import com.aj.base_module.ui.activity.BaseVMActivity
 import com.aj.base_module.ui.viewmodel.BaseViewModel
+import com.aj.data_service.ArouterPageManger
+import com.aj.data_service.ArouterUrlManage
 import com.aj.user_module.ui.login.LoginActivity
 import kotlinx.android.synthetic.main.activity_main_ui.*
 
 class MainActivity() : BaseActivity() {
     override fun initView() {
       tv_login.setOnClickListener { v ->
-          var intent : Intent = Intent(this,LoginActivity::class.java)
-          startActivity(intent)
+          ArouterPageManger.navigation(this@MainActivity, ArouterUrlManage.USER_LOGINACTIVITY)
       };
 
     }
