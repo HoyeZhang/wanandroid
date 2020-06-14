@@ -1,12 +1,19 @@
 apply from: "../ui_module.gradle"
 
 android {
+    android {
+        resourcePrefix "article_" //给 Module 内的资源名增加前缀, 避免资源名冲突
+    }
 
     defaultConfig {
 
         if (isBuildModule.toBoolean()) {
-            applicationId "com.aj.ui"
+            applicationId "com.aj.articlemodule"
         }
+    }
+
+    dataBinding {
+        enabled true
     }
 
     kapt {
@@ -15,15 +22,9 @@ android {
         }
     }
 
-}
 
+}
 
 dependencies {
 
-    if (!isBuildModule.toBoolean()) {
-        implementation project(":user_module")
-        implementation project(":article_module")
-    }
-
-    implementation project(":data_module")
 }

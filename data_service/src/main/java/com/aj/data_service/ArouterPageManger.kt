@@ -3,6 +3,7 @@ package com.aj.data_service
 import android.app.Activity
 import android.content.Context
 import com.alibaba.android.arouter.launcher.ARouter
+import java.util.*
 
 /**
  * @author zhy
@@ -36,4 +37,7 @@ object ArouterPageManger  {
         ARouter.getInstance().build(path).navigation(context)
     }
 
+    fun navigationForResult(path: String) : Any? {
+       return ARouter.getInstance().build(path).navigation();
+    }
 }

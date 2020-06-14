@@ -40,8 +40,9 @@ abstract class BaseVMFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        getLayoutRes()
         if (mRootView == null) {
-            mRootView = View.inflate(container?.context, getLayoutRes(), null)
+            mRootView = View.inflate(this.mActivity, getLayoutRes(), null)
         }
         return mRootView
     }
