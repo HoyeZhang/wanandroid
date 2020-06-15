@@ -5,6 +5,7 @@ import android.os.Parcelable
 import com.aj.base_module.ui.fragment.BaseDataBindVMFragment
 import com.aj.base_module.ui.viewmodel.BaseViewModel
 import com.aj.base_module.ui.viewmodel.initViewModel
+import com.aj.data_service.ArouterPageManger
 import com.aj.data_service.ArouterUrlManage
 import com.aj.user_module.R
 import com.aj.user_module.databinding.UserFragmentUserBinding
@@ -12,6 +13,7 @@ import com.aj.user_module.ui.login.LoginRepository
 import com.aj.user_module.ui.login.LoginViewModel
 
 import com.alibaba.android.arouter.facade.annotation.Route
+import kotlinx.android.synthetic.main.user_fragment_user.*
 
 /**
  * @author zhy
@@ -33,7 +35,9 @@ class UserFragment : BaseDataBindVMFragment<UserFragmentUserBinding>() {
 
 
     override fun initView() {
-
+        tv_goto_login.setOnClickListener {
+          ArouterPageManger.navigation(mActivity, ArouterUrlManage.USER_LOGINACTIVITY)
+      }
     }
 
 

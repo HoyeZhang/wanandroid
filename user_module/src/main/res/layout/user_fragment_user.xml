@@ -2,12 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <!--    <data>-->
 
-    <!--&lt;!&ndash;        <variable&ndash;&gt;-->
-    <!--&lt;!&ndash;            name="userLoginModel"&ndash;&gt;-->
-    <!--&lt;!&ndash;            type="com.fmt.github.user.model.UserLoginModel" />&ndash;&gt;-->
-    <!--    </data>-->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,9 +10,10 @@
         android:background="@android:color/white"
         android:orientation="vertical">
         <TextView
+            android:id="@+id/tv_goto_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="aasdada"/>
+            android:text="tv_goto_login"/>
 
     </LinearLayout>
 </layout>

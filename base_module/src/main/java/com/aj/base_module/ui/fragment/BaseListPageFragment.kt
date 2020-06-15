@@ -21,6 +21,7 @@ abstract class BaseListPageFragment<M> : BaseVMFragment(), SwipeRefreshLayout.On
     override fun initView() {
         initRefreshLayout()
         initRecyclerView()
+        initViewModelAction()
     }
 
     private fun initRefreshLayout() {

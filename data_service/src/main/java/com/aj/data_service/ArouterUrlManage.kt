@@ -35,6 +35,6 @@ object ArouterUrlManage {
      *数据模块
      */
 
-    const val DATAMODULEUSERSERVICE = DATAMODULE + "/user";
+    const val DATAMODULEUSERSERVICE = SERVICE + DATAMODULE +   "/user";
 
 }

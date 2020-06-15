@@ -66,8 +66,10 @@ dependencies {
 
     implementation project(":data_service")
 
-    //刷新
+    //ui
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation "androidx.viewpager2:viewpager2:1.1.0-alpha01"
+
+    implementation 'com.google.android.material:material:1.1.0'
 }

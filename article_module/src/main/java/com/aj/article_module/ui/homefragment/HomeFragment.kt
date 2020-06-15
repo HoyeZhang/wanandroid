@@ -24,11 +24,10 @@ class HomeFragment : BaseListPageFragment<HomeFmViewModel>() {
             this, HomeFmViewModel::class, HomeFmRepository::class
         )
     }
+
     override fun getViewModel(): BaseViewModel {
         return mViewModel
     }
-
-
 
 
     override fun initRecyclerView() {
@@ -36,6 +35,6 @@ class HomeFragment : BaseListPageFragment<HomeFmViewModel>() {
     }
 
     override fun getListData() {
-
+        mViewModel.getArticles(mPage)
     }
 }

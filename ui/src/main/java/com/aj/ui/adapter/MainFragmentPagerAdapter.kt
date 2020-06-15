@@ -8,24 +8,28 @@ import com.aj.base_module.ui.activity.BaseActivity
 import com.aj.data_service.ArouterPageManger
 import com.aj.data_service.ArouterUrlManage
 
-
-
 /**
  * @author zhy
  * @time 2020/6/14.
  */
-class AdapterFragmentPager(fragmentActivity: BaseActivity) : FragmentStateAdapter(fragmentActivity) {
+class AdapterFragmentPager(fragmentActivity: BaseActivity) :
+    FragmentStateAdapter(fragmentActivity) {
 
     private val fragments: SparseArray<Fragment> = SparseArray()
-    init {
-        val userFragment = ArouterPageManger.navigationForResult(ArouterUrlManage.USER_FRAGEMNT) as Fragment
-        val userFragment1 = ArouterPageManger.navigationForResult(ArouterUrlManage.ARYTICLE_HOME_FRAGEMNT) as Fragment
-        val userFragment2 = ArouterPageManger.navigationForResult(ArouterUrlManage.USER_FRAGEMNT) as Fragment
 
-        fragments.put(PAGE_HOME,userFragment  )
-        fragments.put(PAGE_FIND,userFragment1 )
-        fragments.put(PAGE_INDICATOR,userFragment2 )
-//        fragments.put(PAGE_OTHERS,userFragment )
+    init {
+        val homeFragment =
+            ArouterPageManger.navigationForResult(ArouterUrlManage.ARYTICLE_HOME_FRAGEMNT) as Fragment
+        val userFragment1 =
+            ArouterPageManger.navigationForResult(ArouterUrlManage.USER_FRAGEMNT) as Fragment
+        val userFragment2 =
+            ArouterPageManger.navigationForResult(ArouterUrlManage.USER_FRAGEMNT) as Fragment
+        val userFragment3 =
+            ArouterPageManger.navigationForResult(ArouterUrlManage.USER_FRAGEMNT) as Fragment
+        fragments.put(PAGE_HOME, homeFragment)
+        fragments.put(PAGE_FIND, userFragment1)
+        fragments.put(PAGE_INDICATOR, userFragment2)
+        fragments.put(PAGE_OTHERS, userFragment3)
     }
 
     override fun createFragment(position: Int): Fragment {
