@@ -1,6 +1,7 @@
 package com.aj.ui.main
 
 
+import androidx.viewpager2.widget.ViewPager2
 import com.aj.base_module.ui.activity.BaseActivity
 import com.aj.base_module.utlis.imageLoader.ImageLoader
 import com.aj.ui.R
@@ -49,6 +50,12 @@ class MainActivity : BaseActivity() {
 //        ImageLoader.loadImage(this,iv_test,"https://oimagea1.ydstatic.com/image?id=1672530223168343552&product=adpublish&w=520&h=347")
 
         user_main_vp.adapter = AdapterFragmentPager(this)
+        user_main_vp.registerOnPageChangeCallback(object  : ViewPager2.OnPageChangeCallback(){
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                user_main_bnv.menu.getItem(position).setChecked(true)
+            }
+        })
 
         user_main_bnv.run {
             labelVisibilityMode = LabelVisibilityMode.LABEL_VISIBILITY_SELECTED
@@ -61,3 +68,4 @@ class MainActivity : BaseActivity() {
     override fun getLayoutId(): Int  = R.layout.activity_main_ui;
 
 }
+
