@@ -10,6 +10,7 @@ package com.aj.article_module.apis
  */
 
 import com.aj.article_module.bean.ArticleResponseBody
+import com.aj.article_module.bean.OfficialAccount
 import com.aj.base_module.net.BaseResponse
 
 
@@ -24,5 +25,9 @@ interface WanAndroidApis {
     @GET("article/list/{pageNum}/json")
     fun getArticles(@Path("pageNum") pageNum: Int): Call<BaseResponse<ArticleResponseBody>>
 
-
+    /**
+     * 获取公众号列表
+     */
+    @GET("wxarticle/chapters/json")
+    fun getWxArticle(): Call<BaseResponse<OfficialAccount>>
 }

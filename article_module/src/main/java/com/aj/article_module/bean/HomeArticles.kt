@@ -21,7 +21,7 @@ data class ArticleResponseBody(
 )
 
 //文章
-data class Article(
+data class Article (
     val apkLink: String,
     val audit: Int,
     val author: String,
@@ -50,8 +50,9 @@ data class Article(
     val userId: Int,
     val visible: Int,
     val zan: Int,
-    var top: String
-)
+    var top: String,
+    var itemType : Int = ItemDataType.Articles
+):ListDataType
 
 data class Tag(
     val name: String,

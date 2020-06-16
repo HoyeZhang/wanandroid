@@ -55,6 +55,7 @@ abstract class BaseListPageFragment<M> : BaseVMFragment(), SwipeRefreshLayout.On
             } else {
                 mListData.addAll(it)
             }
+            notifyDataSetChanged()
         }
     }
 
@@ -67,5 +68,10 @@ abstract class BaseListPageFragment<M> : BaseVMFragment(), SwipeRefreshLayout.On
     abstract fun initRecyclerView()
 
     abstract fun getListData()
+
+    /**
+     * 回调数据改变
+     */
+    abstract fun notifyDataSetChanged()
 
 }

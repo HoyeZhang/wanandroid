@@ -8,20 +8,20 @@
         android:title="@string/ui_home"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/action_square"
+        android:id="@+id/action_system"
         android:enabled="true"
         android:icon="@drawable/ic_launcher_background"
         android:title="@string/ui_system"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/action_wechat"
+        android:id="@+id/action_project"
         android:enabled="true"
         android:icon="@drawable/ic_launcher_background"
         android:title="@string/ui_project"
         app:showAsAction="ifRoom" />
 
     <item
-        android:id="@+id/action_"
+        android:id="@+id/action_mine"
         android:enabled="true"
         android:icon="@drawable/ic_launcher_background"
         android:title="@string/ui_mine"
