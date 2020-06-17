@@ -14,11 +14,11 @@ import com.aj.article_module.bean.OfficialAccount
 import com.aj.base_module.net.BaseResponse
 
 
-
 import retrofit2.Call
 import retrofit2.http.*
 
 interface WanAndroidApis {
+
     /**
      * 获取首页文章
      */

@@ -2,12 +2,12 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-<!--    <data>-->
+    <data>
 
-<!--&lt;!&ndash;        <variable&ndash;&gt;-->
-<!--&lt;!&ndash;            name="userLoginModel"&ndash;&gt;-->
-<!--&lt;!&ndash;            type="com.fmt.github.user.model.UserLoginModel" />&ndash;&gt;-->
-<!--    </data>-->
+<!--        <variable-->
+<!--            name="userLoginModel"-->
+<!--            type="com.fmt.github.user.model.UserLoginModel" />-->
+    </data>
 
     <LinearLayout
         android:layout_width="match_parent"

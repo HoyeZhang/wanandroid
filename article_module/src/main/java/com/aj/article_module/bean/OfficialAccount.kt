@@ -9,7 +9,7 @@ package com.aj.article_module.bean
  * @CreateDate:     2020/6/16 20:18
  */
 
-class OfficialAccount(var itemType : Int = ItemDataType.OfficialAccount) : ArrayList<OfficialAccountItem>(),ListDataType
+class OfficialAccount( override val dataType: Int= ItemDataType.OfficialAccount) : ArrayList<OfficialAccountItem>(),HomeListDataType
 
 data class OfficialAccountItem(
     val children: List<Any>,

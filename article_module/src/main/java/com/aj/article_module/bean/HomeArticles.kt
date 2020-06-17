@@ -51,8 +51,8 @@ data class Article (
     val visible: Int,
     val zan: Int,
     var top: String,
-    var itemType : Int = ItemDataType.Articles
-):ListDataType
+    override val dataType: Int = ItemDataType.Articles
+):HomeListDataType
 
 data class Tag(
     val name: String,

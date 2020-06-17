@@ -12,7 +12,6 @@ import kotlinx.android.synthetic.main.common_refresh_recyclerview.*
  */
 abstract class BaseListPageFragment<M> : BaseVMFragment(), SwipeRefreshLayout.OnRefreshListener {
 
-    protected val mListData = ObservableArrayList<M>()
 
     protected var mPage = 1
 
@@ -37,24 +36,23 @@ abstract class BaseListPageFragment<M> : BaseVMFragment(), SwipeRefreshLayout.On
     }
 
 
-
     protected fun initViewModelAction() {
         if (mPage == 1) {
             mRefreshLayout.isRefreshing = true
         }
+
         getListData()
     }
 
     protected val mListObserver = Observer<List<M>> {
-
+        mRefreshLayout.isRefreshing = false
         if (it != null && it.isNotEmpty()) {
-            if (mPage == 1) {
-                mListData.clear()
-                mListData.addAll(it)
-                mRefreshLayout.isRefreshing = false
-            } else {
-                mListData.addAll(it)
-            }
+//            if (mPage == 1) {
+//                addData(it)
+//            } else {
+                addData(it)
+                mPage ++
+ //           }
             notifyDataSetChanged()
         }
     }
@@ -68,6 +66,12 @@ abstract class BaseListPageFragment<M> : BaseVMFragment(), SwipeRefreshLayout.On
     abstract fun initRecyclerView()
 
     abstract fun getListData()
+
+    /**
+     * 设置数据
+     */
+    abstract fun addData(it: List<M>)
+
 
     /**
      * 回调数据改变

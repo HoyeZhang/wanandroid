@@ -1,9 +1,10 @@
 package com.aj.article_module.adapter
 
 import com.aj.article_module.R
+import com.aj.article_module.bean.HomeListDataType
 import com.aj.article_module.bean.ItemDataType
 
-import com.aj.article_module.bean.ListDataType
+
 import com.chad.library.adapter.base.BaseProviderMultiAdapter
 import com.chad.library.adapter.base.module.LoadMoreModule
 
@@ -17,7 +18,7 @@ import com.chad.library.adapter.base.module.LoadMoreModule
  * @CreateDate:     2020/6/16 14:24
  */
 
-class HomeListAdapter : BaseProviderMultiAdapter<ListDataType>() , LoadMoreModule {
+class HomeListAdapter : BaseProviderMultiAdapter<HomeListDataType>(), LoadMoreModule {
 
 
     init {
@@ -28,10 +29,10 @@ class HomeListAdapter : BaseProviderMultiAdapter<ListDataType>() , LoadMoreModul
 //        addItemProvider(TextItemProvider())
     }
 
-    override fun getItemType(data: List<ListDataType>, position: Int): Int {
-                when (position % 3) {
-            0 -> return ItemDataType.Articles
-            1 -> return ItemDataType.OfficialAccount
+    override fun getItemType(data: List<HomeListDataType>, position: Int): Int {
+        when (data[position].dataType) {
+            ItemDataType.Articles -> return ItemDataType.Articles
+            ItemDataType.OfficialAccount -> return ItemDataType.OfficialAccount
             else -> {
             }
         }
