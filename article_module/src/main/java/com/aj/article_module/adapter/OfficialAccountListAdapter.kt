@@ -7,6 +7,7 @@ import com.aj.article_module.bean.OfficialAccountItem
 import com.aj.article_module.databinding.ArticleOfficialaccountItemBinding
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
+import kotlin.random.Random
 
 /**
  *
@@ -18,6 +19,9 @@ import com.chad.library.adapter.base.viewholder.BaseViewHolder
  */
 
 class OfficialAccountListAdapter : BaseQuickAdapter<OfficialAccountItem, BaseViewHolder> {
+    private val colors = intArrayOf(
+        R.color.article_colorWhite
+    )
 
     constructor(layoutResId: Int = R.layout.article_officialaccount_item) : super(
         layoutResId
@@ -34,6 +38,10 @@ class OfficialAccountListAdapter : BaseQuickAdapter<OfficialAccountItem, BaseVie
             DataBindingUtil.getBinding(holder.itemView)
         if (articleDamaging != null) {
             articleDamaging.officialAccountItem = item
+        }
+        var  random = Random.nextInt(1)
+        if (articleDamaging != null) {
+            articleDamaging.color =holder.itemView.context.resources.getColor(colors[random])
         }
     }
 

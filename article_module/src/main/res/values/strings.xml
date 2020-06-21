@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">article_module</string>
+    <string name="article_app_name">article_module</string>
+    <string name="article_official_account">公\n众\n号</string>
 </resources>
