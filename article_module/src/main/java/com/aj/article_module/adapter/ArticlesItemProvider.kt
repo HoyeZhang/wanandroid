@@ -42,6 +42,7 @@ class ArticlesItemProvider : BaseItemProvider<HomeListDataType>() {
         if (articleDamaging != null) {
             articleDamaging.article = article
         }
+        
     }
 
 

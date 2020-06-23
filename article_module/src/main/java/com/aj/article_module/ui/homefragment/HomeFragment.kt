@@ -57,6 +57,7 @@ class HomeFragment : BaseListPageFragment<HomeListDataType>() {
             loadMoreModule.setOnLoadMoreListener {
                 getListData()
             }
+
         }
 
         mRecyclerView.run {
@@ -70,6 +71,7 @@ class HomeFragment : BaseListPageFragment<HomeListDataType>() {
         mViewModel.officialAccount.observe(this, Observer {
             officialAccount = it
         })
+
 
     }
 
