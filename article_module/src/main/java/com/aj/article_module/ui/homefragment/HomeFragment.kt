@@ -12,8 +12,10 @@ import com.aj.article_module.bean.OfficialAccount
 import com.aj.base_module.ui.fragment.BaseListPageFragment
 import com.aj.base_module.ui.viewmodel.BaseViewModel
 import com.aj.base_module.ui.viewmodel.initViewModel
+import com.aj.data_service.ArouterPageManger
 import com.aj.data_service.ArouterUrlManage
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.chad.library.adapter.base.listener.OnItemChildClickListener
 import kotlinx.android.synthetic.main.article_fragment_home.*
 
 

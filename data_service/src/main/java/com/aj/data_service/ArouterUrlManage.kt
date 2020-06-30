@@ -28,7 +28,7 @@ object ArouterUrlManage {
     /**
      *文章ui模块
      */
-
+    const val ARYTICLE_ARTICLEDETAIL = ARTICLEMODULE + "/ArticleDetailActivity"
     const val ARYTICLE_HOME_FRAGEMNT = ARTICLEMODULE + "/HomeFragment"
 
     /**

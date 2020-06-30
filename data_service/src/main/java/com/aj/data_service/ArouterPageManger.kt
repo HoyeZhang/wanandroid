@@ -2,6 +2,7 @@ package com.aj.data_service
 
 import android.app.Activity
 import android.content.Context
+import android.os.Bundle
 import com.alibaba.android.arouter.launcher.ARouter
 import java.util.*
 
@@ -39,5 +40,10 @@ object ArouterPageManger  {
 
     fun navigationForResult(path: String) : Any? {
        return ARouter.getInstance().build(path).navigation();
+    }
+
+
+    fun navigationWithParams(context: Context, path: String,bundle: Bundle) {
+        ARouter.getInstance().build(path).with(bundle).navigation(context)
     }
 }

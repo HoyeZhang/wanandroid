@@ -17,7 +17,7 @@
 <!--            </intent-filter>-->
         </activity>
 
-        <activity android:name="com.aj.article_module.ui.articledetail.ArticleDetailActivity">
+        <activity android:name="com.aj.article_module.ui.article_detail.ArticleDetailActivity">
 
         </activity>
     </application>
