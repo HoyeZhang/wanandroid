@@ -3,6 +3,7 @@ package com.aj.article_module.adapter
 
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,6 +15,8 @@ import com.aj.article_module.bean.ItemDataType
 
 import com.aj.article_module.bean.OfficialAccount
 import com.aj.article_module.databinding.ArticleItemOfficialaccountBinding
+import com.aj.data_service.ArouterPageManger
+import com.aj.data_service.ArouterUrlManage
 
 import com.chad.library.adapter.base.provider.BaseItemProvider
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
@@ -22,7 +25,7 @@ import com.chad.library.adapter.base.viewholder.BaseViewHolder
  *
  * @Package:        com.aj.article_module.adapter
  * @ClassName:      ArticlesItemProvider
- * @Description:
+ * @Description:    公众号列表
  * @Author:         zhy
  * @CreateDate:     2020/6/16 14:32
  */
@@ -44,6 +47,11 @@ class OfficialAccountItemProvider : BaseItemProvider<HomeListDataType>() {
         rvOfficialAccount.run {
             adapter = homeAdapter
             layoutManager = linearLayoutManager
+        }
+
+        var tvMore = viewHolder.itemView.findViewById<View>(R.id.tv_more) as TextView
+        tvMore.setOnClickListener {
+            ArouterPageManger.navigation(context, ArouterUrlManage.ARTICLE_OFFICIAL_ACCOUNT_LIST_ACTIVITY)
         }
     }
 

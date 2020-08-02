@@ -11,8 +11,8 @@ object ArouterUrlManage {
      */
     const val APP = "/app"//宿主 App 组件
     const val USERUI = "/userui"//用户ui
-    const val DATAMODULE = "/data_module"//数据模块
-    const val ARTICLEMODULE = "/article_module"//数据模块
+    const val DATA_MODULE = "/data_module"//数据模块
+    const val ARTICLE_MODULE = "/article_module"//数据模块
 
     /**
      * 服务组件, 用于给每个组件暴露特有的服务
@@ -27,14 +27,15 @@ object ArouterUrlManage {
 
     /**
      *文章ui模块
-     */
-    const val ARYTICLE_ARTICLEDETAIL = ARTICLEMODULE + "/ArticleDetailActivity"
-    const val ARYTICLE_HOME_FRAGEMNT = ARTICLEMODULE + "/HomeFragment"
-
+     */ 
+    const val ARTICLE_ARTICLE_DETAIL = ARTICLE_MODULE + "/ArticleDetailActivity"
+    const val ARTICLE_HOME_FRAGMENT = ARTICLE_MODULE + "/HomeFragment"
+    const val ARTICLE_OFFICIAL_ACCOUNT_LIST_ACTIVITY = ARTICLE_MODULE + "/OfficialAccountListActivity"
+    const val ARTICLE_OFFICIAL_ACCOUNT_LIST_FRAGMENT = ARTICLE_MODULE + "/OfficialAccountListFragment"
     /**
      *数据模块
      */
 
-    const val DATAMODULEUSERSERVICE = SERVICE + DATAMODULE +   "/user";
+    const val DATAMODULEUSERSERVICE = SERVICE + DATA_MODULE +   "/user";
 
 }

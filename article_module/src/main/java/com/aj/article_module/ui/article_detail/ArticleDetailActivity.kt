@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.article_activity_article_detail.*
  * @author zhy
  * @time 2020/6/23.
  */
-@Route(path = ArouterUrlManage.ARYTICLE_ARTICLEDETAIL)
+@Route(path = ArouterUrlManage.ARTICLE_ARTICLE_DETAIL)
 class ArticleDetailActivity : BaseActivity() {
     var url = ""
     override fun getLayoutId(): Int = R.layout.article_activity_article_detail

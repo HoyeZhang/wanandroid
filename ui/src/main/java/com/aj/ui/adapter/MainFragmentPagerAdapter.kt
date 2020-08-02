@@ -19,7 +19,7 @@ class AdapterFragmentPager(fragmentActivity: BaseActivity) :
 
     init {
         val homeFragment =
-            ArouterPageManger.navigationForResult(ArouterUrlManage.ARYTICLE_HOME_FRAGEMNT) as Fragment
+            ArouterPageManger.navigationForResult(ArouterUrlManage.ARTICLE_HOME_FRAGMENT) as Fragment
         val userFragment1 =
             ArouterPageManger.navigationForResult(ArouterUrlManage.USER_FRAGEMNT) as Fragment
         val userFragment2 =

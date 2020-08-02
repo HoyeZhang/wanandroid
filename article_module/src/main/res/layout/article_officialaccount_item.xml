@@ -30,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:text="@{officialAccountItem.name.substring(0,1)}"
                 android:textColor="@{color}"
-                android:textSize="@dimen/text_sp_14" />
+                android:textSize="@dimen/base_text_sp_14" />
 
         </LinearLayout>
 
@@ -43,7 +43,7 @@
             android:maxLines="1"
             android:ellipsize="end"
             android:text="@{officialAccountItem.name}"
-            android:textSize="@dimen/text_sp_14" />
+            android:textSize="@dimen/base_text_sp_14" />
 
     </LinearLayout>
 </layout>

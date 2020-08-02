@@ -3,7 +3,7 @@ package com.aj.ui.main
 
 import androidx.viewpager2.widget.ViewPager2
 import com.aj.base_module.ui.activity.BaseActivity
-import com.aj.base_module.utlis.imageLoader.ImageLoader
+import com.aj.base_module.utils.imageLoader.ImageLoader
 import com.aj.ui.R
 import com.aj.data_service.ArouterPageManger
 import com.aj.data_service.ArouterUrlManage

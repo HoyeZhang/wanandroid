@@ -23,7 +23,7 @@ import kotlinx.android.synthetic.main.article_fragment_home.*
  * @author zhy
  * @time 2020/6/14.
  */
-@Route(path = ArouterUrlManage.ARYTICLE_HOME_FRAGEMNT)
+@Route(path = ArouterUrlManage.ARTICLE_HOME_FRAGMENT)
 class HomeFragment : BaseListPageFragment<HomeListDataType>() {
 
     override fun getLayoutRes(): Int = com.aj.base_module.R.layout.common_refresh_recyclerview

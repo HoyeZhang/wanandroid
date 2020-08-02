@@ -26,6 +26,4 @@ dependencies {
     }
 
     implementation project(":data_module")
-
-    implementation 'me.jessyan:autosize:1.2.1'
 }

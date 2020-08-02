@@ -22,7 +22,7 @@ import com.chad.library.adapter.base.viewholder.BaseViewHolder
  *
  * @Package:        com.aj.article_module.adapter
  * @ClassName:      ArticlesItemProvider
- * @Description:
+ * @Description:    文章item
  * @Author:         zhy
  * @CreateDate:     2020/6/16 14:32
  */
@@ -61,7 +61,7 @@ class ArticlesItemProvider : BaseItemProvider<HomeListDataType>() {
         val article = data as Article
         var bundle = Bundle()
         bundle.putString(PageDataInfo.articleUrl,article.link)
-        ArouterPageManger.navigationWithParams(context, ArouterUrlManage.ARYTICLE_ARTICLEDETAIL,bundle)
+        ArouterPageManger.navigationWithParams(context, ArouterUrlManage.ARTICLE_ARTICLE_DETAIL,bundle)
 
     }
 

@@ -20,6 +20,10 @@
         <activity android:name="com.aj.article_module.ui.article_detail.ArticleDetailActivity">
 
         </activity>
+
+        <activity android:name=".ui.official_account.official_account_list.OfficialAccountListActivity" >
+
+        </activity>
     </application>
 
 </manifest>
