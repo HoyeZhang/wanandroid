@@ -1,5 +1,9 @@
 package com.aj.article_module.ui.official_account.official_account_list
 
+import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.aj.article_module.adapter.HomeListAdapter
+import com.aj.article_module.adapter.OfficialAccountListFMAdapter
 import com.aj.article_module.bean.OfficialAccountItem
 import com.aj.article_module.ui.homefragment.HomeFmRepository
 import com.aj.article_module.ui.homefragment.HomeFmViewModel
@@ -8,6 +12,7 @@ import com.aj.base_module.ui.viewmodel.BaseViewModel
 import com.aj.base_module.ui.viewmodel.initViewModel
 import com.aj.data_service.ArouterUrlManage
 import com.alibaba.android.arouter.facade.annotation.Route
+import kotlinx.android.synthetic.main.article_fragment_home.*
 
 /**
  *
@@ -20,6 +25,10 @@ import com.alibaba.android.arouter.facade.annotation.Route
 @Route(path = ArouterUrlManage.ARTICLE_OFFICIAL_ACCOUNT_LIST_FRAGMENT)
 class OfficialAccountListFragment : BaseListPageFragment<OfficialAccountItem>() {
 
+
+    private val accountListFMAdapter: OfficialAccountListFMAdapter by lazy {
+        OfficialAccountListFMAdapter()
+    }
     override fun getLayoutRes(): Int = com.aj.base_module.R.layout.common_refresh_recyclerview
 
     private val mViewModel by lazy {
@@ -28,11 +37,31 @@ class OfficialAccountListFragment : BaseListPageFragment<OfficialAccountItem>() 
         )
     }
 
+    private val linearLayoutManager: LinearLayoutManager by lazy {
+        LinearLayoutManager(activity)
+    }
+
     override fun getViewModel(): BaseViewModel {
         return mViewModel
     }
     override fun initRecyclerView() {
-        TODO("Not yet implemented")
+//        accountListFMAdapter.run {
+//            loadMoreModule.setOnLoadMoreListener {
+//                getListData()
+//            }
+//
+//        }
+
+        mRecyclerView.run {
+            adapter = accountListFMAdapter
+            layoutManager = linearLayoutManager
+
+        }
+
+
+//        mViewModel.officialAccount.observe(this, Observer {
+//         //   officialAccount = it
+//        })
     }
 
     override fun getListData() {
@@ -40,7 +69,7 @@ class OfficialAccountListFragment : BaseListPageFragment<OfficialAccountItem>() 
     }
 
     override fun addData(it: List<OfficialAccountItem>) {
-        TODO("Not yet implemented")
+        accountListFMAdapter.setList(it)
     }
 
     override fun notifyDataSetChanged() {
