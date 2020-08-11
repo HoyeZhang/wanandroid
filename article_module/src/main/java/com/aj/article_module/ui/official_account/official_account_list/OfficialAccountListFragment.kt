@@ -45,23 +45,14 @@ class OfficialAccountListFragment : BaseListPageFragment<OfficialAccountItem>() 
         return mViewModel
     }
     override fun initRecyclerView() {
-//        accountListFMAdapter.run {
-//            loadMoreModule.setOnLoadMoreListener {
-//                getListData()
-//            }
-//
-//        }
 
         mRecyclerView.run {
             adapter = accountListFMAdapter
             layoutManager = linearLayoutManager
-
         }
 
+        mViewModel.officialAccount.observe(this, mListObserver)
 
-//        mViewModel.officialAccount.observe(this, Observer {
-//         //   officialAccount = it
-//        })
     }
 
     override fun getListData() {
@@ -73,7 +64,6 @@ class OfficialAccountListFragment : BaseListPageFragment<OfficialAccountItem>() 
     }
 
     override fun notifyDataSetChanged() {
-        TODO("Not yet implemented")
     }
 
 

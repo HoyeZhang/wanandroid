@@ -5,6 +5,7 @@ import androidx.databinding.ViewDataBinding
 import com.aj.article_module.R
 import com.aj.article_module.bean.OfficialAccountItem
 import com.aj.article_module.databinding.ArticleOfficialaccountItemBinding
+import com.aj.article_module.databinding.ArticleOfficialaccountListItemBinding
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import kotlin.random.Random
@@ -23,7 +24,7 @@ class OfficialAccountListFMAdapter : BaseQuickAdapter<OfficialAccountItem, BaseV
         R.color.article_colorPrimaryDark
     )
 
-    constructor(layoutResId: Int = R.layout.article_officialaccount_item) : super(
+    constructor(layoutResId: Int = R.layout.article_officialaccount_list_item) : super(
         layoutResId
     )
 
@@ -34,7 +35,7 @@ class OfficialAccountListFMAdapter : BaseQuickAdapter<OfficialAccountItem, BaseV
 
     override fun convert(holder: BaseViewHolder, item: OfficialAccountItem) {
         // 获取 Binding
-        var articleDamaging : ArticleOfficialaccountItemBinding? =
+        var articleDamaging : ArticleOfficialaccountListItemBinding? =
             DataBindingUtil.getBinding(holder.itemView)
         if (articleDamaging != null) {
             articleDamaging.officialAccountItem = item

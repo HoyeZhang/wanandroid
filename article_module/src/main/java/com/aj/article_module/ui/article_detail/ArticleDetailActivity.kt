@@ -8,6 +8,10 @@ import com.aj.base_module.ui.activity.BaseActivity
 import com.aj.data_service.ArouterUrlManage
 import com.alibaba.android.arouter.facade.annotation.Route
 import kotlinx.android.synthetic.main.article_activity_article_detail.*
+import android.webkit.WebView
+import android.webkit.WebViewClient
+import android.content.Intent
+import android.net.Uri
 
 
 /**
@@ -17,7 +21,7 @@ import kotlinx.android.synthetic.main.article_activity_article_detail.*
 @Route(path = ArouterUrlManage.ARTICLE_ARTICLE_DETAIL)
 class ArticleDetailActivity : BaseActivity() {
     var url = ""
-    override fun getLayoutId(): Int = R.layout.article_activity_article_detail
+    override fun getLayoutId(): Int = com.aj.article_module.R.layout.article_activity_article_detail
 
     override fun initView() {
         initWebView()
@@ -66,6 +70,20 @@ class ArticleDetailActivity : BaseActivity() {
         webSettings.loadsImagesAutomatically = true //支持自动加载图片
 
         webSettings.defaultTextEncodingName = "utf-8" //设置编码格式
+
+        wv_article.webViewClient = object : WebViewClient() {
+            override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
+                try {
+                    if (url.startsWith("http:") || url.startsWith("https:")) {
+                        view.loadUrl(url)
+                    }
+                    return true
+                } catch (e: Exception) {
+                    return false
+                }
+
+            }
+        }
 
     }
 }

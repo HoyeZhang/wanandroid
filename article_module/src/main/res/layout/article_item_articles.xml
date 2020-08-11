@@ -33,26 +33,15 @@
                 android:ellipsize="end"
                 android:text="@{article.title}" />
             <TextView
-                android:id="@+id/tv_author"
+                android:id="@+id/tv_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/base_dp_5dp"
-                android:textColor="@color/base_text_main_color"
+                android:textColor="@color/base_text_gray_color"
                 android:textSize="@dimen/base_text_sp_14"
-                tools:text="作者"
-                android:text="@{article.author}" />
+                tools:text="时间"
+                android:text="@{DateUtils.INSTANCE.getDate2String(article.publishTime)}" />
+
         </LinearLayout>
-
-
-        <TextView
-            android:id="@+id/tv_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/base_text_gray_color"
-            android:textSize="@dimen/base_text_sp_14"
-            android:layout_marginRight="@dimen/base_dp_5dp"
-            tools:text="时间"
-            android:text="@{DateUtils.INSTANCE.getDate2String(article.publishTime)}" />
 
     </LinearLayout>
 
