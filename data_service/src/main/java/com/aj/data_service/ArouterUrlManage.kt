@@ -32,6 +32,8 @@ object ArouterUrlManage {
     const val ARTICLE_HOME_FRAGMENT = ARTICLE_MODULE + "/HomeFragment"
     const val ARTICLE_OFFICIAL_ACCOUNT_LIST_ACTIVITY = ARTICLE_MODULE + "/OfficialAccountListActivity"
     const val ARTICLE_OFFICIAL_ACCOUNT_LIST_FRAGMENT = ARTICLE_MODULE + "/OfficialAccountListFragment"
+    const val ARTICLE_OFFICIAL_ACCOUNT_ARTICLE_LIST_ACTIVITY = ARTICLE_MODULE + "/OfficialAccountArticleListActivity"
+    const val ARTICLE_OFFICIAL_ACCOUNT_ARTICLE_LIST_FRAGMENT = ARTICLE_MODULE + "/OfficialAccountArticleListFragment"
     /**
      *数据模块
      */

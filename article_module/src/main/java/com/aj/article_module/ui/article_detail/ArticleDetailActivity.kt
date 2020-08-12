@@ -29,7 +29,7 @@ class ArticleDetailActivity : BaseActivity() {
 
     override fun initData() {
         super.initData()
-        var  bundle  = intent.extras
+        val bundle  = intent.extras
         url = bundle?.getString(PageDataInfo.articleUrl).toString()
 
         wv_article.loadUrl(url)

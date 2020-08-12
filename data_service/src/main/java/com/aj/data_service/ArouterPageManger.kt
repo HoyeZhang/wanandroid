@@ -42,6 +42,9 @@ object ArouterPageManger  {
        return ARouter.getInstance().build(path).navigation();
     }
 
+    fun navigationForResultWithParams(path: String,bundle: Bundle) : Any? {
+        return ARouter.getInstance().build(path).with(bundle).navigation()
+    }
 
     fun navigationWithParams(context: Context, path: String,bundle: Bundle) {
         ARouter.getInstance().build(path).with(bundle).navigation(context)

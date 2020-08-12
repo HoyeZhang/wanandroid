@@ -1,22 +1,20 @@
 package com.aj.article_module.adapter
 
 
+import android.os.Bundle
 import android.view.View
-import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.aj.article_module.R
-import com.aj.article_module.bean.HomeListDataType
+import com.aj.article_module.bean.*
 
-import com.aj.article_module.bean.ItemDataType
-
-import com.aj.article_module.bean.OfficialAccount
-import com.aj.article_module.databinding.ArticleItemOfficialaccountBinding
 import com.aj.data_service.ArouterPageManger
 import com.aj.data_service.ArouterUrlManage
+import com.chad.library.adapter.base.BaseQuickAdapter
 
 import com.chad.library.adapter.base.provider.BaseItemProvider
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
@@ -45,7 +43,7 @@ class OfficialAccountItemProvider : BaseItemProvider<HomeListDataType>() {
         linearLayoutManager.orientation = LinearLayoutManager.HORIZONTAL
 
         rvOfficialAccount.run {
-            adapter = homeAdapter
+            adapter = accountListAdapter
             layoutManager = linearLayoutManager
         }
 
@@ -59,7 +57,7 @@ class OfficialAccountItemProvider : BaseItemProvider<HomeListDataType>() {
     /**
      * Home Adapter
      */
-    private val homeAdapter: OfficialAccountListAdapter by lazy {
+    private val accountListAdapter: OfficialAccountListAdapter by lazy {
         OfficialAccountListAdapter()
     }
 
@@ -67,7 +65,13 @@ class OfficialAccountItemProvider : BaseItemProvider<HomeListDataType>() {
 
     override fun convert(helper: BaseViewHolder, item: HomeListDataType) {
       val officialAccount = item as OfficialAccount
-        homeAdapter.setList(officialAccount)
+        accountListAdapter.setList(officialAccount)
+        accountListAdapter.setOnItemClickListener(){ baseQuickAdapter, view, i ->
+            val article =officialAccount.get(i)
+            val bundle = Bundle()
+            bundle.putInt(PageDataInfo.officialAccountId,article.id)
+            ArouterPageManger.navigationWithParams(context, ArouterUrlManage.ARTICLE_OFFICIAL_ACCOUNT_ARTICLE_LIST_ACTIVITY,bundle)
+        }
     }
 
 

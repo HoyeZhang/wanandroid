@@ -12,6 +12,6 @@ package com.aj.article_module.bean
 
 object PageDataInfo {
 
-     val articleUrl = "articleUrl"
-
+     const val articleUrl = "articleUrl"
+     const val officialAccountId = "OfficialAccountId"
 }

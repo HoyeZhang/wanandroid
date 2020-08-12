@@ -34,17 +34,11 @@ class HomeFragment : BaseListPageFragment<HomeListDataType>() {
         )
     }
 
-    /**
-     * Home Adapter
-     */
     private val homeAdapter: HomeListAdapter by lazy {
         HomeListAdapter()
     }
 
 
-    /**
-     * LinearLayoutManager
-     */
     private val linearLayoutManager: LinearLayoutManager by lazy {
         LinearLayoutManager(activity)
     }

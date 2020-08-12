@@ -30,4 +30,10 @@ interface WanAndroidApis {
      */
     @GET("wxarticle/chapters/json")
     fun getWxArticle(): Call<BaseResponse<OfficialAccount>>
+
+    /**
+     * 获取公众号文章
+     */
+    @GET("wxarticle/list/{accountId}/{pageNum}/json?k=Java")
+    fun getOfficialAccountArticleList(@Path("accountId") accountId: Int,@Path("pageNum") pageNum: Int): Call<BaseResponse<ArticleResponseBody>>
 }

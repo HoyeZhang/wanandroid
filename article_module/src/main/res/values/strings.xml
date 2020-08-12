@@ -2,4 +2,6 @@
     <string name="article_app_name">article_module</string>
     <string name="article_official_account">公众号</string>
     <string name="article_more">更多 ></string>
+    <string name="article_share_user">分享者 :  </string>
+    <string name="article_author">作者 :  </string>
 </resources>

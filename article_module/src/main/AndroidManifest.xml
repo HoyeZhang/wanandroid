@@ -23,6 +23,10 @@
         <activity android:name=".ui.official_account.official_account_list.OfficialAccountListActivity" >
 
         </activity>
+
+        <activity android:name=".ui.official_account.official_account_article_list.OfficialAccountArticleListActivity" >
+
+        </activity>
     </application>
 
 </manifest>

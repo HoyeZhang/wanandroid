@@ -1,17 +1,16 @@
 package com.aj.article_module.adapter
 
-import android.os.Bundle
-import android.view.View
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.aj.article_module.R
+import com.aj.article_module.bean.Article
+import com.aj.article_module.bean.ArticleResponseBody
 import com.aj.article_module.bean.OfficialAccountItem
-import com.aj.article_module.bean.PageDataInfo
+import com.aj.article_module.databinding.ArticleItemArticlesBinding
 import com.aj.article_module.databinding.ArticleOfficialaccountItemBinding
-import com.aj.data_service.ArouterPageManger
-import com.aj.data_service.ArouterUrlManage
+import com.aj.article_module.databinding.ArticleOfficialaccountListItemBinding
 import com.chad.library.adapter.base.BaseQuickAdapter
-import com.chad.library.adapter.base.listener.OnItemClickListener
+import com.chad.library.adapter.base.module.LoadMoreModule
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import kotlin.random.Random
 
@@ -21,15 +20,16 @@ import kotlin.random.Random
  * @ClassName:      OfficialAccountListAdapter
  * @Description:
  * @Author:         zhy
- * @CreateDate:     2020/6/17 11:12
+ * @CreateDate:     2020/8/03 11:12
  */
 
-class OfficialAccountListAdapter : BaseQuickAdapter<OfficialAccountItem, BaseViewHolder> {
+class OfficialAccountArticleListFMAdapter : BaseQuickAdapter<Article, BaseViewHolder>,
+    LoadMoreModule {
     private val colors = intArrayOf(
-        R.color.article_colorWhite
+        R.color.article_colorPrimaryDark
     )
 
-    constructor(layoutResId: Int = R.layout.article_officialaccount_item) : super(
+    constructor(layoutResId: Int = R.layout.article_item_articles) : super(
         layoutResId
     )
 
@@ -38,17 +38,14 @@ class OfficialAccountListAdapter : BaseQuickAdapter<OfficialAccountItem, BaseVie
         DataBindingUtil.bind<ViewDataBinding>(viewHolder.itemView)
     }
 
-    override fun convert(holder: BaseViewHolder, item: OfficialAccountItem) {
+    override fun convert(holder: BaseViewHolder, item: Article) {
         // 获取 Binding
-        var articleDamaging : ArticleOfficialaccountItemBinding? =
+        var articleDamaging : ArticleItemArticlesBinding? =
             DataBindingUtil.getBinding(holder.itemView)
         if (articleDamaging != null) {
-            articleDamaging.officialAccountItem = item
+            articleDamaging.article = item
         }
-        var  random = Random.nextInt(1)
-        if (articleDamaging != null) {
-            articleDamaging.color =holder.itemView.context.resources.getColor(colors[random])
-        }
+
     }
 
 }

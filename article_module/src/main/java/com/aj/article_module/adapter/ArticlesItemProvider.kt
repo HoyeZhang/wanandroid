@@ -50,7 +50,6 @@ class ArticlesItemProvider : BaseItemProvider<HomeListDataType>() {
 
     }
 
-
     override fun onClick(
         helper: BaseViewHolder,
         view: View,

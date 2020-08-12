@@ -4,46 +4,64 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <import type="com.aj.base_module.utils.DateUtils"/>
+
+        <import type="com.aj.base_module.utils.DateUtils" />
+        <import type="android.text.TextUtils" />
         <variable
             name="article"
             type="com.aj.article_module.bean.Article" />
     </data>
-    <LinearLayout
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
+        android:paddingLeft="@dimen/base_dp_10dp"
+        android:paddingRight="@dimen/base_dp_10dp"
+        android:paddingTop="@dimen/base_dp_5dp"
+        android:paddingBottom="@dimen/base_dp_5dp"
         android:orientation="horizontal">
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_weight="1"
+
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginLeft="@dimen/base_dp_5dp"
-            android:layout_marginRight="@dimen/base_dp_5dp">
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="@{article.title}"
+            android:textColor="@color/base_text_main_color"
+            android:textSize="@dimen/base_text_sp_17"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="标题" />
 
-            <TextView
-                android:id="@+id/tv_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/base_text_main_color"
-                android:textSize="@dimen/base_text_sp_17"
-                tools:text="标题"
-                android:maxLines="2"
-                android:ellipsize="end"
-                android:text="@{article.title}" />
-            <TextView
-                android:id="@+id/tv_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/base_text_gray_color"
-                android:textSize="@dimen/base_text_sp_14"
-                tools:text="时间"
-                android:text="@{DateUtils.INSTANCE.getDate2String(article.publishTime)}" />
+        <TextView
+            android:id="@+id/tv_form"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{!TextUtils.isEmpty(article.shareUser) ? @string/article_share_user +article.shareUser: @string/article_author + article.author}"
+            android:textColor="@color/base_text_gray_color"
+            android:textSize="@dimen/base_text_sp_14"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title"
+            tools:text="来源" />
 
-        </LinearLayout>
 
-    </LinearLayout>
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{DateUtils.INSTANCE.getDate2String(article.publishTime)}"
+            android:textColor="@color/base_text_gray_color"
+            android:textSize="@dimen/base_text_sp_14"
+            app:layout_constraintLeft_toRightOf="@+id/tv_form"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title"
+            android:layout_marginLeft="@dimen/dp_10"
+            tools:text="时间" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </layout>
