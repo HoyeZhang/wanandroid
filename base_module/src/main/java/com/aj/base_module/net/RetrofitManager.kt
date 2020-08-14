@@ -1,6 +1,7 @@
 package com.aj.base_module.net
 
 
+import com.aj.base_module.BuildConfig
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -10,7 +11,7 @@ import java.util.concurrent.TimeUnit
 object RetrofitManager {
 
     private val okHttpClient: OkHttpClient by lazy {
-        getOkHttpClient(true)
+        getOkHttpClient(BuildConfig.LOG_DEBUG)
     }
 
     private val retrofit: Retrofit by lazy {

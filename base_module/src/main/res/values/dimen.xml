@@ -3,7 +3,10 @@
     <dimen name="base_text_sp_14">14sp</dimen>
     <dimen name="base_text_sp_17">17sp</dimen>
 
+    <dimen name="base_dp_1dp">1dp</dimen>
     <dimen name="base_dp_2dp">2dp</dimen>
+    <dimen name="base_dp_3dp">3dp</dimen>
+    <dimen name="base_dp_4dp">4dp</dimen>
     <dimen name="base_dp_5dp">5dp</dimen>
     <dimen name="base_dp_7dp">7dp</dimen>
     <dimen name="base_dp_10dp">10dp</dimen>

@@ -34,6 +34,6 @@ interface WanAndroidApis {
     /**
      * 获取公众号文章
      */
-    @GET("wxarticle/list/{accountId}/{pageNum}/json?k=Java")
+    @GET("wxarticle/list/{accountId}/{pageNum}/json")
     fun getOfficialAccountArticleList(@Path("accountId") accountId: Int,@Path("pageNum") pageNum: Int): Call<BaseResponse<ArticleResponseBody>>
 }

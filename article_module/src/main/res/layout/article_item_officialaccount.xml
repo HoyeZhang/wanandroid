@@ -39,5 +39,9 @@
             android:id="@+id/rv_official_account"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_10"
+            android:background="@color/base_color_bg"/>
     </LinearLayout>
 </layout>

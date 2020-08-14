@@ -26,7 +26,7 @@ import kotlin.random.Random
 
 class OfficialAccountListAdapter : BaseQuickAdapter<OfficialAccountItem, BaseViewHolder> {
     private val colors = intArrayOf(
-        R.color.article_colorWhite
+        R.color.base_colorWhite
     )
 
     constructor(layoutResId: Int = R.layout.article_officialaccount_item) : super(
@@ -45,7 +45,7 @@ class OfficialAccountListAdapter : BaseQuickAdapter<OfficialAccountItem, BaseVie
         if (articleDamaging != null) {
             articleDamaging.officialAccountItem = item
         }
-        var  random = Random.nextInt(1)
+        val  random = Random.nextInt(colors.size)
         if (articleDamaging != null) {
             articleDamaging.color =holder.itemView.context.resources.getColor(colors[random])
         }

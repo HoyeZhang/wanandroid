@@ -1,8 +1,12 @@
 package com.aj.article_module.adapter
 
 
+import android.graphics.Color
+import android.graphics.drawable.GradientDrawable
+import android.os.Build
 import android.os.Bundle
 import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.aj.article_module.R
@@ -10,12 +14,12 @@ import com.aj.article_module.bean.Article
 import com.aj.article_module.bean.HomeListDataType
 import com.aj.article_module.bean.ItemDataType
 import com.aj.article_module.bean.PageDataInfo
-
 import com.aj.article_module.databinding.ArticleItemArticlesBinding
 import com.aj.data_service.ArouterPageManger
 import com.aj.data_service.ArouterUrlManage
 import com.chad.library.adapter.base.provider.BaseItemProvider
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
+import kotlin.random.Random
 
 
 /**
@@ -28,6 +32,13 @@ import com.chad.library.adapter.base.viewholder.BaseViewHolder
  */
 
 class ArticlesItemProvider : BaseItemProvider<HomeListDataType>() {
+
+    private val colors = intArrayOf(
+        R.color.base_color_deep_gray,
+        R.color.base_color_gray,
+        R.color.base_colorAccent,
+        R.color.base_colorPrimary
+    )
 
     override val itemViewType: Int
         get() = ItemDataType.Articles
@@ -42,11 +53,16 @@ class ArticlesItemProvider : BaseItemProvider<HomeListDataType>() {
     override fun convert(helper: BaseViewHolder, item: HomeListDataType) {
         val article = item as Article
         // 获取 Binding
-        var articleDamaging: ArticleItemArticlesBinding? =
+        val articleDamaging: ArticleItemArticlesBinding? =
             DataBindingUtil.getBinding(helper.itemView)
         if (articleDamaging != null) {
             articleDamaging.article = article
         }
+        val tvTab = helper.getView<View>(R.id.tv_tab)
+        val gradientDrawable : GradientDrawable = tvTab.background as GradientDrawable
+        val random  =Random.nextInt(colors.size )
+        gradientDrawable.setColor(ContextCompat.getColor(context,colors[random]))
+
 
     }
 
