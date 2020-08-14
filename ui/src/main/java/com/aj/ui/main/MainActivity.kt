@@ -24,18 +24,22 @@ class MainActivity : BaseActivity() {
         BottomNavigationView.OnNavigationItemSelectedListener { item ->
             return@OnNavigationItemSelectedListener when (item.itemId) {
                 R.id.action_home -> {
+                    toolbar.title = getText(R.string.ui_home)
                     user_main_vp.setCurrentItem(0,false)
                     true
                 }
                 R.id.action_system -> {
+                    toolbar.title = getText(R.string.ui_system)
                     user_main_vp.setCurrentItem(1,false)
                     true
                 }
                 R.id.action_project -> {
+                    toolbar.title = getText(R.string.ui_project)
                     user_main_vp.setCurrentItem(2,false)
                     true
                 }
                 R.id.action_mine -> {
+                    toolbar.title = getText(R.string.ui_mine)
                     user_main_vp.setCurrentItem(3,false)
                     true
                 }
@@ -48,9 +52,8 @@ class MainActivity : BaseActivity() {
 
 
     override fun initView() {
-
+        toolbar.title = getText(R.string.ui_home)
 //        ImageLoader.loadImage(this,iv_test,"https://oimagea1.ydstatic.com/image?id=1672530223168343552&product=adpublish&w=520&h=347")
-        toolbar.setTitle(getText(R.string.app_name))
         user_main_vp.adapter = AdapterFragmentPager(this)
         user_main_vp.registerOnPageChangeCallback(object  : ViewPager2.OnPageChangeCallback(){
             override fun onPageSelected(position: Int) {

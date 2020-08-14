@@ -64,8 +64,7 @@ class OfficialAccountArticleListFMAdapter : BaseQuickAdapter<Article, BaseViewHo
         }
         val tvTab = holder.getView<View>(R.id.tv_tab)
         val gradientDrawable : GradientDrawable = tvTab.background as GradientDrawable
-        val random  =Random.nextInt(colors.size )
-        gradientDrawable.setColor(ContextCompat.getColor(context,colors[random]))
+        gradientDrawable.setColor(ContextCompat.getColor(context,colors[Random.nextInt(colors.size )]))
 
     }
 
