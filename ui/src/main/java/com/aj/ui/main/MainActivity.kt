@@ -58,7 +58,8 @@ class MainActivity : BaseActivity() {
                 user_main_bnv.menu.getItem(position).setChecked(true)
             }
         })
-
+        //设置不滑动
+        user_main_vp.isUserInputEnabled = false
         user_main_bnv.run {
             labelVisibilityMode = LabelVisibilityMode.LABEL_VISIBILITY_SELECTED
             setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
