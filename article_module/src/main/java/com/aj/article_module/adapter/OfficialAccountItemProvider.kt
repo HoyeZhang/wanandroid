@@ -38,8 +38,8 @@ class OfficialAccountItemProvider : BaseItemProvider<HomeListDataType>() {
     override fun onViewHolderCreated(viewHolder: BaseViewHolder, viewType: Int) {
         super.onViewHolderCreated(viewHolder, viewType)
         DataBindingUtil.bind<ViewDataBinding>(viewHolder.itemView)
-        var rvOfficialAccount = viewHolder.itemView.findViewById<View>(R.id.rv_official_account) as RecyclerView
-        var linearLayoutManager = LinearLayoutManager(context)
+        val rvOfficialAccount = viewHolder.itemView.findViewById<View>(R.id.rv_official_account) as RecyclerView
+        val linearLayoutManager = LinearLayoutManager(context)
         linearLayoutManager.orientation = LinearLayoutManager.HORIZONTAL
 
         rvOfficialAccount.run {
@@ -47,7 +47,7 @@ class OfficialAccountItemProvider : BaseItemProvider<HomeListDataType>() {
             layoutManager = linearLayoutManager
         }
 
-        var tvMore = viewHolder.itemView.findViewById<View>(R.id.tv_more) as TextView
+        val tvMore = viewHolder.itemView.findViewById<View>(R.id.tv_more) as TextView
         tvMore.setOnClickListener {
             ArouterPageManger.navigation(context, ArouterUrlManage.ARTICLE_OFFICIAL_ACCOUNT_LIST_ACTIVITY)
         }
@@ -66,12 +66,7 @@ class OfficialAccountItemProvider : BaseItemProvider<HomeListDataType>() {
     override fun convert(helper: BaseViewHolder, item: HomeListDataType) {
       val officialAccount = item as OfficialAccount
         accountListAdapter.setList(officialAccount)
-        accountListAdapter.setOnItemClickListener(){ baseQuickAdapter, view, i ->
-            val article =officialAccount.get(i)
-            val bundle = Bundle()
-            bundle.putInt(PageDataInfo.officialAccountId,article.id)
-            ArouterPageManger.navigationWithParams(context, ArouterUrlManage.ARTICLE_OFFICIAL_ACCOUNT_ARTICLE_LIST_ACTIVITY,bundle)
-        }
+
     }
 
 

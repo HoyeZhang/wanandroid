@@ -1,12 +1,8 @@
 package com.aj.article_module.ui.official_account.official_account_list
 
-import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.aj.article_module.adapter.HomeListAdapter
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.aj.article_module.adapter.OfficialAccountListFMAdapter
 import com.aj.article_module.bean.OfficialAccountItem
-import com.aj.article_module.ui.homefragment.HomeFmRepository
-import com.aj.article_module.ui.homefragment.HomeFmViewModel
 import com.aj.base_module.ui.fragment.BaseListPageFragment
 import com.aj.base_module.ui.viewmodel.BaseViewModel
 import com.aj.base_module.ui.viewmodel.initViewModel
@@ -37,8 +33,11 @@ class OfficialAccountListFragment : BaseListPageFragment<OfficialAccountItem>() 
         )
     }
 
-    private val linearLayoutManager: LinearLayoutManager by lazy {
-        LinearLayoutManager(activity)
+    private val staggeredGridLayoutManager: StaggeredGridLayoutManager by lazy {
+        StaggeredGridLayoutManager(
+            2,
+            StaggeredGridLayoutManager.VERTICAL
+        )
     }
 
     override fun getViewModel(): BaseViewModel {
@@ -48,7 +47,7 @@ class OfficialAccountListFragment : BaseListPageFragment<OfficialAccountItem>() 
 
         mRecyclerView.run {
             adapter = accountListFMAdapter
-            layoutManager = linearLayoutManager
+            layoutManager = staggeredGridLayoutManager
         }
 
         mViewModel.officialAccount.observe(this, mListObserver)

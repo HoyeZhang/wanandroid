@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools">
     <data>
         <variable
             name="officialAccountItem"
@@ -10,21 +11,26 @@
             type="Integer" />
     </data>
     <LinearLayout
+        android:id="@+id/ll_bg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/article_bg_white_round_5_official_account"
+        android:layout_margin="@dimen/base_dp_5dp"
+        android:gravity="center"
         android:orientation="vertical">
-
 
         <TextView
             android:id="@+id/tv_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:padding="3dp"
-            android:maxLines="1"
             android:ellipsize="end"
+            android:maxLines="1"
+            android:padding="3dp"
+            android:textColor="@color/base_colorWhite"
             android:text="@{officialAccountItem.name}"
-            android:textSize="@dimen/base_text_sp_14" />
+            android:textSize="@dimen/base_text_sp_14"
+            tool:text="name" />
 
     </LinearLayout>
 </layout>

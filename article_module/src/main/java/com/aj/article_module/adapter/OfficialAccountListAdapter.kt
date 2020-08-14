@@ -49,6 +49,12 @@ class OfficialAccountListAdapter : BaseQuickAdapter<OfficialAccountItem, BaseVie
         if (articleDamaging != null) {
             articleDamaging.color =holder.itemView.context.resources.getColor(colors[random])
         }
+
+        setOnItemClickListener { _, _, _ ->
+            val bundle = Bundle()
+            bundle.putInt(PageDataInfo.officialAccountId,item.id)
+            ArouterPageManger.navigationWithParams(context, ArouterUrlManage.ARTICLE_OFFICIAL_ACCOUNT_ARTICLE_LIST_ACTIVITY,bundle)
+        }
     }
 
 }
