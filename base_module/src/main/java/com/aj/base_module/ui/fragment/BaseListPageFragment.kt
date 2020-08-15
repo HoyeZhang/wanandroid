@@ -25,6 +25,7 @@ abstract class BaseListPageFragment<M> : BaseVMFragment(), SwipeRefreshLayout.On
         mRefreshLayout.run {
             setOnRefreshListener(this@BaseListPageFragment)
         }
+        mRefreshLayout.setColorSchemeResources(R.color.base_colorAccent,R.color.base_colorPrimary)
     }
 
     override fun onRefresh() {

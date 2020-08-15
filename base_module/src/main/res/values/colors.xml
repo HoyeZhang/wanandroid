@@ -14,7 +14,7 @@
     <color name="base_color_cyan">#00ffff</color>
     <color name="base_color_transparent">#00000000</color>
 
-    <color name="base_color_bg">#F7F7F7</color>
+    <color name="base_color_bg">#F3F7F7</color>
     <color name="base_text_main_color">#333333</color>
     <color name="base_text_gray_color">#666666</color>
 

@@ -26,6 +26,10 @@ abstract class BaseFragmentActivity : BaseActivity() {
 
     abstract fun setPageTitle() : String
 
+    fun changePageTitle(title :String){
+        toolbar.title =title;
+    }
+
     abstract fun setFragmentTag() : String
 
     abstract fun setFragmentView() : Fragment

@@ -66,7 +66,12 @@ class OfficialAccountItemProvider : BaseItemProvider<HomeListDataType>() {
     override fun convert(helper: BaseViewHolder, item: HomeListDataType) {
       val officialAccount = item as OfficialAccount
         accountListAdapter.setList(officialAccount)
-
+        accountListAdapter.setOnItemClickListener { _, _,  position ->
+            val bundle = Bundle()
+            bundle.putInt(PageDataInfo.officialAccountId,officialAccount[position].id)
+            bundle.putString(PageDataInfo.officialAccountName,officialAccount[position].name)
+            ArouterPageManger.navigationWithParams(context, ArouterUrlManage.ARTICLE_OFFICIAL_ACCOUNT_ARTICLE_LIST_ACTIVITY,bundle)
+        }
     }
 
 

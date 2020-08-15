@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.aj.article_module.adapter.OfficialAccountArticleListFMAdapter
-import com.aj.article_module.adapter.OfficialAccountListFMAdapter
 import com.aj.article_module.bean.Article
 import com.aj.article_module.bean.ItemDataType
 

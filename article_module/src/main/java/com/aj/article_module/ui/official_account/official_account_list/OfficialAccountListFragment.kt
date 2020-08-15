@@ -1,11 +1,14 @@
 package com.aj.article_module.ui.official_account.official_account_list
 
+import android.os.Bundle
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.aj.article_module.adapter.OfficialAccountListFMAdapter
 import com.aj.article_module.bean.OfficialAccountItem
+import com.aj.article_module.bean.PageDataInfo
 import com.aj.base_module.ui.fragment.BaseListPageFragment
 import com.aj.base_module.ui.viewmodel.BaseViewModel
 import com.aj.base_module.ui.viewmodel.initViewModel
+import com.aj.data_service.ArouterPageManger
 import com.aj.data_service.ArouterUrlManage
 import com.alibaba.android.arouter.facade.annotation.Route
 import kotlinx.android.synthetic.main.article_fragment_home.*

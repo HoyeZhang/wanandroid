@@ -22,6 +22,13 @@ class OfficialAccountArticleListActivity : BaseFragmentActivity() {
 
     override fun setFragmentTag(): String = "OfficialAccountArticleListActivity"
 
+    override fun initView() {
+        super.initView()
+        val bundle  = intent.extras
+        if (bundle != null) {
+            changePageTitle( bundle.getString(PageDataInfo.officialAccountName,"公众号文章"))
+        }
+    }
     override fun setFragmentView(): Fragment {
         val bundle  = intent.extras
         return bundle?.let {

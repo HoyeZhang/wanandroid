@@ -9,7 +9,9 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="25dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/base_dp_10dp"
+            android:layout_marginBottom="@dimen/base_dp_5dp"
             android:gravity="center">
 
             <TextView
@@ -30,7 +32,7 @@
                 android:layout_gravity="center"
                 android:layout_marginLeft="7dp"
                 android:layout_marginRight="7dp"
-                android:textColor="@color/base_text_main_color"
+                android:textColor="@color/base_colorAccent"
                 android:text="@string/article_more"
                 android:textSize="@dimen/base_text_sp_14" />
         </LinearLayout>
@@ -42,6 +44,8 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_10"
+            android:layout_marginTop="@dimen/base_dp_5dp"
+            android:layout_marginBottom="@dimen/base_dp_10dp"
             android:background="@color/base_color_bg"/>
     </LinearLayout>
 </layout>

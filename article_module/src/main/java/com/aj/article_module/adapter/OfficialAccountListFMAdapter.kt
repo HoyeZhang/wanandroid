@@ -30,9 +30,10 @@ import kotlin.random.Random
 
 class OfficialAccountListFMAdapter : BaseQuickAdapter<OfficialAccountItem, BaseViewHolder> {
     private val colors = intArrayOf(
-        R.color.base_color_cyan,
         R.color.base_color_deep_gray,
-        R.color.base_colorAccent
+        R.color.base_color_gray,
+        R.color.base_colorAccent,
+        R.color.base_colorPrimary
     )
 
     constructor(layoutResId: Int = R.layout.article_officialaccount_list_item) : super(
@@ -56,11 +57,6 @@ class OfficialAccountListFMAdapter : BaseQuickAdapter<OfficialAccountItem, BaseV
             articleDamaging.color =holder.itemView.context.resources.getColor(colors[random])
         }
 
-        setOnItemClickListener { _, _, _ ->
-            val bundle = Bundle()
-            bundle.putInt(PageDataInfo.officialAccountId,item.id)
-            ArouterPageManger.navigationWithParams(context, ArouterUrlManage.ARTICLE_OFFICIAL_ACCOUNT_ARTICLE_LIST_ACTIVITY,bundle)
-        }
 
         val llBg = holder.getView<View>(R.id.ll_bg)
         val gradientDrawable : GradientDrawable = llBg.background as GradientDrawable
@@ -69,7 +65,14 @@ class OfficialAccountListFMAdapter : BaseQuickAdapter<OfficialAccountItem, BaseV
         val params = llBg.layoutParams
 
         params.width = LinearLayout.LayoutParams.MATCH_PARENT
-        params.height = 200 + Random.nextInt(150)
+        params.height = 150 + Random.nextInt(150)
+
+        llBg.setOnClickListener(View.OnClickListener {
+            val bundle = Bundle()
+            bundle.putInt(PageDataInfo.officialAccountId,item.id)
+            bundle.putString(PageDataInfo.officialAccountName,item.name)
+            ArouterPageManger.navigationWithParams(context, ArouterUrlManage.ARTICLE_OFFICIAL_ACCOUNT_ARTICLE_LIST_ACTIVITY,bundle)
+        })
     }
 
 }
