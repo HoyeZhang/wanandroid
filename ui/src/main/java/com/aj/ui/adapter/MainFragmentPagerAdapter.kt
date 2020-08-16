@@ -20,16 +20,16 @@ class AdapterFragmentPager(fragmentActivity: BaseActivity) :
     init {
         val homeFragment =
             ArouterPageManger.navigationForResult(ArouterUrlManage.ARTICLE_HOME_FRAGMENT) as Fragment
-        val userFragment1 =
-            ArouterPageManger.navigationForResult(ArouterUrlManage.USER_FRAGEMNT) as Fragment
-        val userFragment2 =
-            ArouterPageManger.navigationForResult(ArouterUrlManage.USER_FRAGEMNT) as Fragment
-        val userFragment3 =
+        val systemFragment =
+            ArouterPageManger.navigationForResult(ArouterUrlManage.ARTICLE_SYSTEM_FRAGMENT) as Fragment
+        val projectFragment =
+            ArouterPageManger.navigationForResult(ArouterUrlManage.ARTICLE_PROJECT_FRAGMENT) as Fragment
+        val userFragment =
             ArouterPageManger.navigationForResult(ArouterUrlManage.USER_FRAGEMNT) as Fragment
         fragments.put(PAGE_HOME, homeFragment)
-        fragments.put(PAGE_FIND, userFragment1)
-        fragments.put(PAGE_INDICATOR, userFragment2)
-        fragments.put(PAGE_OTHERS, userFragment3)
+        fragments.put(PAGE_SYSTEM, systemFragment)
+        fragments.put(PAGE_PROJECT, projectFragment)
+        fragments.put(PAGE_MINE, userFragment)
     }
 
     override fun createFragment(position: Int): Fragment {
@@ -44,11 +44,11 @@ class AdapterFragmentPager(fragmentActivity: BaseActivity) :
 
         const val PAGE_HOME = 0
 
-        const val PAGE_FIND = 1
+        const val PAGE_SYSTEM = 1
 
-        const val PAGE_INDICATOR = 2
+        const val PAGE_PROJECT = 2
 
-        const val PAGE_OTHERS = 3
+        const val PAGE_MINE = 3
 
     }
 }

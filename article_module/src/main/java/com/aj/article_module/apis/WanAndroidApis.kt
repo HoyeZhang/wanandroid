@@ -11,6 +11,7 @@ package com.aj.article_module.apis
 
 import com.aj.article_module.bean.ArticleResponseBody
 import com.aj.article_module.bean.OfficialAccount
+import com.aj.article_module.bean.ProjectTreeBean
 import com.aj.base_module.net.BaseResponse
 
 
@@ -36,4 +37,10 @@ interface WanAndroidApis {
      */
     @GET("wxarticle/list/{accountId}/{pageNum}/json")
     fun getOfficialAccountArticleList(@Path("accountId") accountId: Int,@Path("pageNum") pageNum: Int): Call<BaseResponse<ArticleResponseBody>>
+
+    /**
+     * 获取项目分类
+     */
+    @GET("project/tree/json")
+    fun getProjectTree(): Call<BaseResponse<List<ProjectTreeBean>>>
 }
