@@ -2,35 +2,20 @@ package com.aj.article_module.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentStatePagerAdapter
-import androidx.viewpager.widget.PagerAdapter
+import androidx.lifecycle.Lifecycle
+import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.aj.base_module.ui.fragment.BaseVMFragment
 
-class ViewPagerAdapter(fragmentManager: FragmentManager) : FragmentStatePagerAdapter(fragmentManager) {
-    private lateinit var fragments: List<Fragment>
-    private lateinit var titles: List<String>
+class ViewPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle,fragments : List<BaseVMFragment>) : FragmentStateAdapter(fragmentManager, lifecycle) {
+    private var mFragments : List<BaseVMFragment> = fragments
 
-    fun setFragments(fragments: List<Fragment>) {
-        this.fragments = fragments
+    override fun getItemCount(): Int {
+
+        return mFragments.size
     }
 
-    fun setFragmentsAndTitles(fragments: List<Fragment>, titles: List<String>) {
-        this.fragments = fragments
-        this.titles = titles
+    override fun createFragment(position: Int): Fragment {
+        return mFragments[position]
     }
 
-    override fun getItem(position: Int): Fragment {
-        return fragments[position]
-    }
-
-    override fun getPageTitle(position: Int): CharSequence? {
-        return titles[position]
-    }
-
-    override fun getCount(): Int {
-        return fragments.size
-    }
-
-    override fun getItemPosition(`object`: Any): Int {
-        return PagerAdapter.POSITION_NONE
-    }
 }

@@ -1,6 +1,8 @@
 package com.aj.article_module.ui.project.project_fragment
 
+import android.content.res.ColorStateList
 import android.text.Html
+import android.widget.TextView
 import androidx.lifecycle.Observer
 import com.aj.article_module.R
 import com.aj.article_module.adapter.ViewPagerAdapter
@@ -11,7 +13,10 @@ import com.aj.base_module.ui.viewmodel.initViewModel
 import com.aj.data_service.ArouterUrlManage
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
+import com.google.android.material.tabs.TabLayoutMediator.TabConfigurationStrategy
 import kotlinx.android.synthetic.main.article_layout_project_fragment.*
+
 
 /**
  * @author zhy
@@ -19,6 +24,7 @@ import kotlinx.android.synthetic.main.article_layout_project_fragment.*
  */
 @Route(path = ArouterUrlManage.ARTICLE_PROJECT_FRAGMENT)
 class ProjectFragment : BaseVMFragment() {
+    var mediator : TabLayoutMediator? = null
     override fun getLayoutRes(): Int = R.layout.article_layout_project_fragment
 
     private val mViewModel by lazy {
@@ -42,12 +48,19 @@ class ProjectFragment : BaseVMFragment() {
                 fragments.add(PeojectListFragment.newInstance(category.id))
             }
 
-            val viewPagerAdapter = ViewPagerAdapter(childFragmentManager)
-            viewPagerAdapter.setFragmentsAndTitles(fragments, titles)
+            val viewPagerAdapter = ViewPagerAdapter(childFragmentManager, lifecycle,fragments)
+
             vp_project.offscreenPageLimit = it.size + 1
             vp_project.adapter = viewPagerAdapter
             projectTabLayout.tabMode = TabLayout.MODE_SCROLLABLE
-            projectTabLayout.setupWithViewPager(vp_project)
+
+             mediator = TabLayoutMediator(projectTabLayout, vp_project,
+                TabConfigurationStrategy { tab, position -> //这里可以自定义TabView
+                    tab.text = titles[position]
+                })
+            //要执行这一句才是真正将两者绑定起来
+            mediator!!.attach()
+
         })
     }
 
