@@ -8,11 +8,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 class ProjectListFmRepository : BaseRepository() {
-    suspend fun getArticles(num :Int) = withContext(Dispatchers.IO) {
-        RetrofitManager.create(WanAndroidApis::class.java).getArticles(num).await()
-    }
-
-    suspend fun getWxArticle() = withContext(Dispatchers.IO) {
-        RetrofitManager.create(WanAndroidApis::class.java).getWxArticle().await()
+    suspend fun getProjectListByid(num :Int,id : Int) = withContext(Dispatchers.IO) {
+        RetrofitManager.create(WanAndroidApis::class.java).getProjectListByid(num,id).await()
     }
 }

@@ -11,6 +11,7 @@ package com.aj.article_module.apis
 
 import com.aj.article_module.bean.ArticleResponseBody
 import com.aj.article_module.bean.OfficialAccount
+import com.aj.article_module.bean.ProjectBean
 import com.aj.article_module.bean.ProjectTreeBean
 import com.aj.base_module.net.BaseResponse
 
@@ -43,4 +44,10 @@ interface WanAndroidApis {
      */
     @GET("project/tree/json")
     fun getProjectTree(): Call<BaseResponse<List<ProjectTreeBean>>>
+
+    /**
+     * 项目分类列表
+     */
+    @GET("project/list/{pageNum}/json")
+    fun getProjectListByid(@Path("pageNum") pageNum: Int, @Query("cid") cid: Int): Call<BaseResponse<ProjectBean>>
 }

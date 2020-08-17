@@ -2,12 +2,14 @@ package com.aj.article_module.ui.project.projectlist_fragment
 
 
 import android.os.Bundle
+import android.view.View
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.aj.article_module.adapter.HomeListAdapter
-import com.aj.article_module.bean.HomeListDataType
-import com.aj.article_module.bean.ItemDataType
-import com.aj.article_module.bean.OfficialAccount
+
+import com.aj.article_module.adapter.OfficialAccountArticleListFMAdapter
+import com.aj.article_module.adapter.ProjectListFMAdapter
+import com.aj.article_module.bean.*
+import com.aj.article_module.bean.PageDataInfo.officialAccountId
 import com.aj.base_module.ui.fragment.BaseListPageFragment
 import com.aj.base_module.ui.viewmodel.BaseViewModel
 import com.aj.base_module.ui.viewmodel.initViewModel
@@ -17,13 +19,17 @@ import kotlinx.android.synthetic.main.article_fragment_home.*
 
 
 @Route(path = ArouterUrlManage.ARTICLE_PROJECTLIST_FRAGMENT)
-class PeojectListFragment : BaseListPageFragment<HomeListDataType>() {
+class PeojectListFragment : BaseListPageFragment<ProjectDataItem>() {
+    var projectId = 0
+    private val projectListFMAdapter: ProjectListFMAdapter by lazy {
+        ProjectListFMAdapter()
+    }
 
     companion object {
         fun newInstance(cid: Int) =
             PeojectListFragment().apply {
                 arguments = Bundle().apply {
-                    putInt("cid", cid)
+                    putInt(PageDataInfo.projectId, cid)
                 }
             }
     }
@@ -32,15 +38,17 @@ class PeojectListFragment : BaseListPageFragment<HomeListDataType>() {
 
     private val mViewModel by lazy {
         initViewModel(
-            this, ProjectListFmViewModel::class, ProjectListFmRepository::class
+            this,
+            ProjectListFmViewModel::class,
+            ProjectListFmRepository::class
         )
     }
 
-    private val homeAdapter: HomeListAdapter by lazy {
-        HomeListAdapter()
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val bundle  = arguments
+        projectId = bundle?.getInt(PageDataInfo.projectId)!!
     }
-
-
     private val linearLayoutManager: LinearLayoutManager by lazy {
         LinearLayoutManager(activity)
     }
@@ -49,52 +57,39 @@ class PeojectListFragment : BaseListPageFragment<HomeListDataType>() {
         return mViewModel
     }
 
-    var officialAccount: OfficialAccount? = null;
     override fun initRecyclerView() {
-        homeAdapter.run {
+        projectListFMAdapter.run {
             loadMoreModule.setOnLoadMoreListener {
                 getListData()
             }
 
         }
-
         mRecyclerView.run {
-            adapter = homeAdapter
+            adapter = projectListFMAdapter
             layoutManager = linearLayoutManager
-
         }
-
-        mViewModel.articleList.observe(this, mListObserver)
-
-        mViewModel.officialAccount.observe(this, Observer {
-            officialAccount = it
-        })
-
-
+        mViewModel.projectList.observe(this, mListObserver)
     }
 
     override fun getListData() {
+        mViewModel.getProjectListByid(mPage,projectId)
+    }
+
+    override fun addData(it: List<ProjectDataItem>) {
         if (mPage == 1) {
-            mViewModel.getWxArticle()
+            projectListFMAdapter.setList(it)
+        } else {
+            projectListFMAdapter.addData(it)
         }
-        mViewModel.getArticles(mPage)
+
+        if (it.size < ItemDataType.pageOffset) {
+            projectListFMAdapter.loadMoreModule.loadMoreEnd()
+        } else {
+            projectListFMAdapter.loadMoreModule.loadMoreComplete()
+        }
     }
 
     override fun notifyDataSetChanged() {
     }
 
-    override fun addData(it: List<HomeListDataType>) {
-        if (mPage == 1) {
-            homeAdapter.setList(it)
-            homeAdapter.addData(0, officialAccount!!)
-        } else {
-            homeAdapter.addData(it)
-        }
-        if (it.size < ItemDataType.pageOffset) {
-            homeAdapter.loadMoreModule.loadMoreEnd()
-        } else {
-            homeAdapter.loadMoreModule.loadMoreComplete()
-        }
-
-    }
 }

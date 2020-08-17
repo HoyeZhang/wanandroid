@@ -1,0 +1,36 @@
+package com.aj.article_module.bean
+
+data class ProjectBean(val over: Boolean = false,
+                       val pageCount: Int = 0,
+                       val total: Int = 0,
+                       val curPage: Int = 0,
+                       val offset: Int = 0,
+                       val size: Int = 0,
+                       val datas: List<ProjectDataItem>?)
+
+data class ProjectDataItem(val superChapterName: String = "",
+                     val publishTime: Long = 0,
+                     val visible: Int = 0,
+                     val niceDate: String = "",
+                     val projectLink: String = "",
+                     val author: String = "",
+                     val zan: Int = 0,
+                     val origin: String = "",
+                     val chapterName: String = "",
+                     val link: String = "",
+                     val title: String = "",
+                     val type: Int = 0,
+                     val userId: Int = 0,
+                     val tags: List<TagsItem>?,
+                     val apkLink: String = "",
+                     val envelopePic: String = "",
+                     val chapterId: Int = 0,
+                     val superChapterId: Int = 0,
+                     val id: Int = 0,
+                     val fresh: Boolean = false,
+                     var collect: Boolean = false,
+                     val courseId: Int = 0,
+                     val desc: String = "")
+
+data class TagsItem(val name: String = "",
+                    val url: String = "")

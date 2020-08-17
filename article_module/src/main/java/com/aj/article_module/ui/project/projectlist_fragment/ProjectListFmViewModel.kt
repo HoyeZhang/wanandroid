@@ -5,23 +5,20 @@ import androidx.lifecycle.MutableLiveData
 import com.aj.article_module.bean.Article
 
 import com.aj.article_module.bean.OfficialAccount
+import com.aj.article_module.bean.ProjectBean
+import com.aj.article_module.bean.ProjectDataItem
 
 import com.aj.base_module.ui.viewmodel.BaseViewModel
 
 
 class ProjectListFmViewModel(private val repository: ProjectListFmRepository) : BaseViewModel() {
-    var articleList = MutableLiveData<List<Article>>()
-    var officialAccount = MutableLiveData<OfficialAccount>()
 
-    fun getArticles(num :Int) {
-        launch {
-            articleList.value =  repository.getArticles(num).data.datas
-        }
-    }
+    var projectList = MutableLiveData<List<ProjectDataItem>>()
 
-    fun getWxArticle() {
+
+    fun getProjectListByid(num :Int,id : Int) {
         launch {
-            officialAccount.value = repository.getWxArticle().data
+            projectList.value = repository.getProjectListByid(num,id).data.datas
         }
     }
 }

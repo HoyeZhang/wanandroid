@@ -17,4 +17,7 @@ object PageDataInfo {
      const val officialAccountId = "OfficialAccountId"
      //公众号名字
      const val officialAccountName = "officialAccountName"
+     //项目分类
+     const val projectId = "projectId"
+
 }
