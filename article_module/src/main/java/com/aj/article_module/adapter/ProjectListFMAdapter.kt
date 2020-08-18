@@ -52,13 +52,13 @@ class ProjectListFMAdapter : BaseQuickAdapter<ProjectDataItem, BaseViewHolder>, 
         }
 
 
-        val llBg = holder.getView<View>(R.id.ll_bg)
+        val clBg = holder.getView<View>(R.id.cl_bg)
 
-        llBg.setOnClickListener(View.OnClickListener {
+        clBg.setOnClickListener {
             var bundle = Bundle()
             bundle.putString(PageDataInfo.articleUrl,item.link)
             ArouterPageManger.navigationWithParams(context, ArouterUrlManage.ARTICLE_ARTICLE_DETAIL,bundle)
-        })
+        }
     }
 
 }

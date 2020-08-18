@@ -3,13 +3,10 @@ package com.aj.article_module.ui.project.projectlist_fragment
 
 import android.os.Bundle
 import android.view.View
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 
-import com.aj.article_module.adapter.OfficialAccountArticleListFMAdapter
 import com.aj.article_module.adapter.ProjectListFMAdapter
 import com.aj.article_module.bean.*
-import com.aj.article_module.bean.PageDataInfo.officialAccountId
 import com.aj.base_module.ui.fragment.BaseListPageFragment
 import com.aj.base_module.ui.viewmodel.BaseViewModel
 import com.aj.base_module.ui.viewmodel.initViewModel
@@ -19,7 +16,7 @@ import kotlinx.android.synthetic.main.article_fragment_home.*
 
 
 @Route(path = ArouterUrlManage.ARTICLE_PROJECTLIST_FRAGMENT)
-class PeojectListFragment : BaseListPageFragment<ProjectDataItem>() {
+class ProjectListFragment : BaseListPageFragment<ProjectDataItem>() {
     var projectId = 0
     private val projectListFMAdapter: ProjectListFMAdapter by lazy {
         ProjectListFMAdapter()
@@ -27,7 +24,7 @@ class PeojectListFragment : BaseListPageFragment<ProjectDataItem>() {
 
     companion object {
         fun newInstance(cid: Int) =
-            PeojectListFragment().apply {
+            ProjectListFragment().apply {
                 arguments = Bundle().apply {
                     putInt(PageDataInfo.projectId, cid)
                 }

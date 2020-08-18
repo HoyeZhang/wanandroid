@@ -1,12 +1,10 @@
 package com.aj.article_module.ui.project.project_fragment
 
-import android.content.res.ColorStateList
 import android.text.Html
-import android.widget.TextView
 import androidx.lifecycle.Observer
 import com.aj.article_module.R
 import com.aj.article_module.adapter.ViewPagerAdapter
-import com.aj.article_module.ui.project.projectlist_fragment.PeojectListFragment
+import com.aj.article_module.ui.project.projectlist_fragment.ProjectListFragment
 import com.aj.base_module.ui.fragment.BaseVMFragment
 import com.aj.base_module.ui.viewmodel.BaseViewModel
 import com.aj.base_module.ui.viewmodel.initViewModel
@@ -24,7 +22,7 @@ import kotlinx.android.synthetic.main.article_layout_project_fragment.*
  */
 @Route(path = ArouterUrlManage.ARTICLE_PROJECT_FRAGMENT)
 class ProjectFragment : BaseVMFragment() {
-    var mediator : TabLayoutMediator? = null
+    private var mediator : TabLayoutMediator? = null
     override fun getLayoutRes(): Int = R.layout.article_layout_project_fragment
 
     private val mViewModel by lazy {
@@ -42,10 +40,10 @@ class ProjectFragment : BaseVMFragment() {
             val titles = arrayListOf<String>()
             val fragments = arrayListOf<BaseVMFragment>()
             titles.add("最新")
-            fragments.add(PeojectListFragment.newInstance(0))
+            fragments.add(ProjectListFragment.newInstance(0))
             for (category in it) {
                 titles.add(Html.fromHtml(category.name).toString())
-                fragments.add(PeojectListFragment.newInstance(category.id))
+                fragments.add(ProjectListFragment.newInstance(category.id))
             }
 
             val viewPagerAdapter = ViewPagerAdapter(childFragmentManager, lifecycle,fragments)
