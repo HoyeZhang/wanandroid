@@ -4,6 +4,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.aj.base_module.R
 import kotlinx.android.synthetic.main.base_toolbar.*
+import androidx.core.content.ContextCompat.getSystemService
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+
+
+
 
 
 /**
@@ -20,6 +25,12 @@ abstract class BaseFragmentActivity : BaseActivity() {
 
     override fun initView() {
         toolbar.title = setPageTitle()
+
+        setSupportActionBar(toolbar);
+        supportActionBar?.setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener {
+            this.finish()
+        }
         fragmentView = setFragmentView()
         showFragment()
     }
