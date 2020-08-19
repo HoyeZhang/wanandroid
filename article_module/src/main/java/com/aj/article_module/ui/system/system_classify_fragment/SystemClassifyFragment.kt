@@ -30,7 +30,7 @@ class SystemClassifyFragment : BaseVMFragment() {
     var  systemTreeBean : SystemTreeBean? = null
     companion object {
         fun newInstance(systemTreeBean : SystemTreeBean) =
-            SystemListFragment().apply {
+            SystemClassifyFragment().apply {
                 arguments = Bundle().apply {
                     putParcelable(PageDataInfo.systemTreeBean, systemTreeBean)
                 }
@@ -38,9 +38,9 @@ class SystemClassifyFragment : BaseVMFragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
         val bundle  = arguments
         systemTreeBean = bundle?.getParcelable(PageDataInfo.systemTreeBean)!!
+        super.onViewCreated(view, savedInstanceState)
     }
 
     private val mViewModel by lazy {
@@ -64,7 +64,7 @@ class SystemClassifyFragment : BaseVMFragment() {
 
         val viewPagerAdapter = ViewPagerAdapter(childFragmentManager, lifecycle,fragments)
 
-        vp_project.offscreenPageLimit = systemTreeBean!!.children.size
+        vp_project.offscreenPageLimit = 3
         vp_project.adapter = viewPagerAdapter
         projectTabLayout.tabMode = TabLayout.MODE_SCROLLABLE
 

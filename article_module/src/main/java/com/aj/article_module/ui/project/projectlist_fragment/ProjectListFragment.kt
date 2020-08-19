@@ -73,7 +73,7 @@ class ProjectListFragment : BaseListPageFragment<ProjectDataItem>() {
     }
 
     override fun addData(it: List<ProjectDataItem>) {
-        if (mPage == 1) {
+        if (mPage == 0) {
             projectListFMAdapter.setList(it)
         } else {
             projectListFMAdapter.addData(it)

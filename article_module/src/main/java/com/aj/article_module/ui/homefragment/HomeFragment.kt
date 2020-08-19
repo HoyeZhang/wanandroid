@@ -72,7 +72,7 @@ class HomeFragment : BaseListPageFragment<HomeListDataType>() {
     }
 
     override fun getListData() {
-        if (mPage == 1) {
+        if (mPage == 0) {
             mViewModel.getWxArticle()
         }
         mViewModel.getArticles(mPage)
@@ -82,7 +82,7 @@ class HomeFragment : BaseListPageFragment<HomeListDataType>() {
     }
 
     override fun addData(it: List<HomeListDataType>) {
-        if (mPage == 1) {
+        if (mPage == 0) {
             homeAdapter.setList(it)
             homeAdapter.addData(0, officialAccount!!)
         } else {

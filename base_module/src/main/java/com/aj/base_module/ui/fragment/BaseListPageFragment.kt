@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.common_refresh_recyclerview.*
  */
 abstract class BaseListPageFragment<M> : BaseVMFragment(), SwipeRefreshLayout.OnRefreshListener {
 
-    protected var mPage = 1
+    protected var mPage = 0
 
     override fun getLayoutRes(): Int = R.layout.common_refresh_recyclerview
 
@@ -29,12 +29,12 @@ abstract class BaseListPageFragment<M> : BaseVMFragment(), SwipeRefreshLayout.On
     }
 
     override fun onRefresh() {
-        mPage = 1
+        mPage = 0
         initData()
     }
 
     override fun initData() {
-        if (mPage == 1) {
+        if (mPage == 0) {
             mRefreshLayout.isRefreshing = true
         }
 

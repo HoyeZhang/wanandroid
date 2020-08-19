@@ -74,7 +74,7 @@ class OfficialAccountArticleListFragment : BaseListPageFragment<Article>() {
     }
 
     override fun addData(it: List<Article>) {
-        if (mPage == 1) {
+        if (mPage == 0) {
             accountListFMAdapter.setList(it)
         } else {
             accountListFMAdapter.addData(it)

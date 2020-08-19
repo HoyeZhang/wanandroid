@@ -42,9 +42,9 @@ class SystemListFragment : BaseListPageFragment<Article>() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
         val bundle  = arguments
         projectId = bundle?.getInt(PageDataInfo.projectId)!!
+        super.onViewCreated(view, savedInstanceState)
     }
     private val linearLayoutManager: LinearLayoutManager by lazy {
         LinearLayoutManager(activity)
@@ -73,7 +73,7 @@ class SystemListFragment : BaseListPageFragment<Article>() {
     }
 
     override fun addData(it: List<Article>) {
-        if (mPage == 1) {
+        if (mPage == 0) {
             systemListFMAdapter.setList(it)
         } else {
             systemListFMAdapter.addData(it)
