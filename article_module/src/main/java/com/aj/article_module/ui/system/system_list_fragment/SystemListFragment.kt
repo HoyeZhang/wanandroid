@@ -4,8 +4,8 @@ package com.aj.article_module.ui.project.projectlist_fragment
 import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.aj.article_module.adapter.OfficialAccountArticleListFMAdapter
 
-import com.aj.article_module.adapter.ProjectListFMAdapter
 import com.aj.article_module.bean.*
 import com.aj.base_module.ui.fragment.BaseListPageFragment
 import com.aj.base_module.ui.viewmodel.BaseViewModel
@@ -15,16 +15,16 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import kotlinx.android.synthetic.main.article_fragment_home.*
 
 
-@Route(path = ArouterUrlManage.ARTICLE_PROJECT_LIST_FRAGMENT)
-class ProjectListFragment : BaseListPageFragment<ProjectDataItem>() {
-    var projectId = 0
-    private val projectListFMAdapter: ProjectListFMAdapter by lazy {
-        ProjectListFMAdapter()
+@Route(path = ArouterUrlManage.ARTICLE_SYSTEM_LIST_FRAGMENT)
+class SystemListFragment : BaseListPageFragment<Article>() {
+    private var projectId = 0
+    private val systemListFMAdapter: OfficialAccountArticleListFMAdapter by lazy {
+        OfficialAccountArticleListFMAdapter()
     }
 
     companion object {
         fun newInstance(cid: Int) =
-            ProjectListFragment().apply {
+            SystemListFragment().apply {
                 arguments = Bundle().apply {
                     putInt(PageDataInfo.projectId, cid)
                 }
@@ -36,8 +36,8 @@ class ProjectListFragment : BaseListPageFragment<ProjectDataItem>() {
     private val mViewModel by lazy {
         initViewModel(
             this,
-            ProjectListFmViewModel::class,
-            ProjectListFmRepository::class
+            SystemListFmViewModel::class,
+            SystemListFmRepository::class
         )
     }
 
@@ -55,34 +55,34 @@ class ProjectListFragment : BaseListPageFragment<ProjectDataItem>() {
     }
 
     override fun initRecyclerView() {
-        projectListFMAdapter.run {
+        systemListFMAdapter.run {
             loadMoreModule.setOnLoadMoreListener {
                 getListData()
             }
 
         }
         mRecyclerView.run {
-            adapter = projectListFMAdapter
+            adapter = systemListFMAdapter
             layoutManager = linearLayoutManager
         }
-        mViewModel.projectList.observe(this, mListObserver)
+        mViewModel.articleList.observe(this, mListObserver)
     }
 
     override fun getListData() {
-        mViewModel.getProjectListByid(mPage,projectId)
+        mViewModel.getSystemTreeArticle(mPage,projectId)
     }
 
-    override fun addData(it: List<ProjectDataItem>) {
+    override fun addData(it: List<Article>) {
         if (mPage == 1) {
-            projectListFMAdapter.setList(it)
+            systemListFMAdapter.setList(it)
         } else {
-            projectListFMAdapter.addData(it)
+            systemListFMAdapter.addData(it)
         }
 
         if (it.size < ItemDataType.pageOffset) {
-            projectListFMAdapter.loadMoreModule.loadMoreEnd()
+            systemListFMAdapter.loadMoreModule.loadMoreEnd()
         } else {
-            projectListFMAdapter.loadMoreModule.loadMoreComplete()
+            systemListFMAdapter.loadMoreModule.loadMoreComplete()
         }
     }
 

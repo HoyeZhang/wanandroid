@@ -9,10 +9,7 @@ package com.aj.article_module.apis
  * @CreateDate:     2020/6/15 10:33
  */
 
-import com.aj.article_module.bean.ArticleResponseBody
-import com.aj.article_module.bean.OfficialAccount
-import com.aj.article_module.bean.ProjectBean
-import com.aj.article_module.bean.ProjectTreeBean
+import com.aj.article_module.bean.*
 import com.aj.base_module.net.BaseResponse
 
 
@@ -50,4 +47,17 @@ interface WanAndroidApis {
      */
     @GET("project/list/{pageNum}/json")
     fun getProjectListByid(@Path("pageNum") pageNum: Int, @Query("cid") cid: Int): Call<BaseResponse<ProjectBean>>
+
+    /**
+     * 获取体系分类
+     */
+    @GET("tree/json")
+    fun getSystemTree(): Call<BaseResponse<List<SystemTreeBean>>>
+
+    /**
+     * 获取体系分类文章
+     */
+    @GET("article/list/{pageNum}/json")
+    fun getSystemTreeArticle(@Path("pageNum") pageNum: Int,@Query("cid")cid: Int): Call<BaseResponse<ArticleResponseBody>>
+
 }

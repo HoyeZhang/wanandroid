@@ -8,11 +8,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 class SystemFmRepository : BaseRepository() {
-    suspend fun getArticles(num :Int) = withContext(Dispatchers.IO) {
-        RetrofitManager.create(WanAndroidApis::class.java).getArticles(num).await()
-    }
-
-    suspend fun getWxArticle() = withContext(Dispatchers.IO) {
-        RetrofitManager.create(WanAndroidApis::class.java).getWxArticle().await()
+    suspend fun getSystemTree() = withContext(Dispatchers.IO) {
+        RetrofitManager.create(WanAndroidApis::class.java).getSystemTree().await()
     }
 }

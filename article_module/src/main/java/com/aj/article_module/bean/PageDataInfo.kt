@@ -20,4 +20,6 @@ object PageDataInfo {
      //项目分类
      const val projectId = "projectId"
 
+     //体系
+     const val systemTreeBean ="SystemTreeBean"
 }
