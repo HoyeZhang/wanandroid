@@ -15,6 +15,7 @@ import com.aj.article_module.bean.HomeListDataType
 import com.aj.article_module.bean.ItemDataType
 import com.aj.article_module.bean.PageDataInfo
 import com.aj.article_module.databinding.ArticleItemArticlesBinding
+import com.aj.base_module.utils.ContextCompatUtils
 import com.aj.data_service.ArouterPageManger
 import com.aj.data_service.ArouterUrlManage
 import com.chad.library.adapter.base.provider.BaseItemProvider
@@ -60,7 +61,7 @@ class ArticlesItemProvider : BaseItemProvider<HomeListDataType>() {
         }
         val tvTab = helper.getView<View>(R.id.tv_tab)
         val gradientDrawable : GradientDrawable = tvTab.background as GradientDrawable
-        gradientDrawable.setColor(ContextCompat.getColor(context,colors[Random.nextInt(colors.size )]))
+        gradientDrawable.setColor(ContextCompatUtils.getColor(context,colors[Random.nextInt(colors.size )]))
 
 
     }

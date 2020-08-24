@@ -27,6 +27,10 @@
         <activity android:name=".ui.official_account.official_account_article_list.OfficialAccountArticleListActivity" >
 
         </activity>
+
+        <activity android:name=".ui.system.system_classify_fragment.SystemClassifyActivity" >
+
+        </activity>
     </application>
 
 </manifest>

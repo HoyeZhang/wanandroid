@@ -21,5 +21,7 @@ object PageDataInfo {
      const val projectId = "projectId"
 
      //体系
+     const val systemTreeName ="systemTreeName"
+     //体系
      const val systemTreeBean ="SystemTreeBean"
 }
