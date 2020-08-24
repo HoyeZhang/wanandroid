@@ -51,6 +51,7 @@ class OfficialAccountArticleListFMAdapter : BaseQuickAdapter<Article, BaseViewHo
         setOnItemClickListener { _, _, position ->
             val bundle = Bundle()
             bundle.putString(PageDataInfo.articleUrl,data[position].link)
+            bundle.putString(PageDataInfo.articleTitle,data[position].title)
             ArouterPageManger.navigationWithParams(context, ArouterUrlManage.ARTICLE_ARTICLE_DETAIL,bundle)
         }
     }

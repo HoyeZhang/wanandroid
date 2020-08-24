@@ -57,6 +57,7 @@ class ProjectListFMAdapter : BaseQuickAdapter<ProjectDataItem, BaseViewHolder>, 
         clBg.setOnClickListener {
             var bundle = Bundle()
             bundle.putString(PageDataInfo.articleUrl,item.link)
+            bundle.putString(PageDataInfo.articleTitle,item.title)
             ArouterPageManger.navigationWithParams(context, ArouterUrlManage.ARTICLE_ARTICLE_DETAIL,bundle)
         }
     }

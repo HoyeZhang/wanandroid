@@ -76,6 +76,7 @@ class ArticlesItemProvider : BaseItemProvider<HomeListDataType>() {
         val article = data as Article
         var bundle = Bundle()
         bundle.putString(PageDataInfo.articleUrl,article.link)
+        bundle.putString(PageDataInfo.articleTitle,article.title)
         ArouterPageManger.navigationWithParams(context, ArouterUrlManage.ARTICLE_ARTICLE_DETAIL,bundle)
 
     }

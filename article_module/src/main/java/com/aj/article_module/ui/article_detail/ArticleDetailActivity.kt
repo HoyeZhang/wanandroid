@@ -10,8 +10,8 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import kotlinx.android.synthetic.main.article_activity_article_detail.*
 import android.webkit.WebView
 import android.webkit.WebViewClient
-import android.content.Intent
-import android.net.Uri
+import kotlinx.android.synthetic.main.article_activity_article_detail.toolbar
+
 
 
 /**
@@ -21,9 +21,17 @@ import android.net.Uri
 @Route(path = ArouterUrlManage.ARTICLE_ARTICLE_DETAIL)
 class ArticleDetailActivity : BaseActivity() {
     var url = ""
-    override fun getLayoutId(): Int = com.aj.article_module.R.layout.article_activity_article_detail
+    override fun getLayoutId(): Int = R.layout.article_activity_article_detail
 
     override fun initView() {
+        val bundle  = intent.extras
+        val title = bundle?.getString(PageDataInfo.articleTitle).toString()
+        toolbar.title = title
+        setSupportActionBar(toolbar);
+        supportActionBar?.setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener {
+            this.finish()
+        }
         initWebView()
     }
 

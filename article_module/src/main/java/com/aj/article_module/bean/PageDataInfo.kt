@@ -13,6 +13,8 @@ package com.aj.article_module.bean
 object PageDataInfo {
      //文章链接
      const val articleUrl = "articleUrl"
+     //文章标题
+     const val articleTitle= "articleTitle"
      //公众号id
      const val officialAccountId = "OfficialAccountId"
      //公众号名字
