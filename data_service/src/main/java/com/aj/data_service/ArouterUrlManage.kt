@@ -46,4 +46,6 @@ object ArouterUrlManage {
 
     const val DATAMODULEUSERSERVICE = SERVICE + DATA_MODULE +   "/user";
 
+    const val DATAMODULEAPPCONTEXTSERVICE = SERVICE + DATA_MODULE +   "/appContext";
+
 }

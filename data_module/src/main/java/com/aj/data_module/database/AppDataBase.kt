@@ -17,7 +17,7 @@ abstract class AppDataBase : RoomDatabase() {
         @Volatile
         private var instance: AppDataBase? = null
 
-        fun getDBInstace(): AppDataBase {
+        fun getDBInstance(): AppDataBase {
             if (instance == null) {
                 synchronized(AppDataBase::class) {
                     if (instance == null) {

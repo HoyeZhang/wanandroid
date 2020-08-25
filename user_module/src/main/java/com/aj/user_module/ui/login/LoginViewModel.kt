@@ -15,7 +15,7 @@ class LoginViewModel(private val repository: LoginRepository) : BaseViewModel() 
 
     @Autowired(name = ArouterUrlManage.DATAMODULEUSERSERVICE)
     @JvmField
-    var userService: UserService? = null;
+    var userService: UserService? = null
 
     fun login(username: String, password: String) {
         ARouter.getInstance().inject(this);

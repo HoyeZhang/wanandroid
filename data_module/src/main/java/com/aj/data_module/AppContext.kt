@@ -4,7 +4,7 @@ import android.content.Context
 
 class AppContext {
     companion object {
-        lateinit var context : Context;
+        lateinit var context : Context
     }
 
 }

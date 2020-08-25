@@ -10,7 +10,7 @@ import com.aj.data_module.database.AppDataBase
  */
 class UserDataProvide {
 
-    var userDao =  AppDataBase.getDBInstace().userDao()
+    var userDao =  AppDataBase.getDBInstance().userDao()
     fun addUser(username : String,password :String){
 
         var user =User(username = username,password = password);

@@ -25,5 +25,4 @@ dependencies {
         implementation project(":article_module")
     }
 
-    implementation project(":data_module")
 }
