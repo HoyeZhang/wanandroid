@@ -1,6 +1,7 @@
 package com.aj.article_module.ui.article_detail
 
 import android.os.Bundle
+import android.text.Html
 import android.webkit.WebSettings
 import com.aj.article_module.R
 import com.aj.article_module.bean.PageDataInfo
@@ -26,7 +27,7 @@ class ArticleDetailActivity : BaseActivity() {
     override fun initView() {
         val bundle  = intent.extras
         val title = bundle?.getString(PageDataInfo.articleTitle).toString()
-        toolbar.title = title
+        toolbar.title = Html.fromHtml(title)
         setSupportActionBar(toolbar);
         supportActionBar?.setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationOnClickListener {
@@ -47,8 +48,6 @@ class ArticleDetailActivity : BaseActivity() {
 
         //声明WebSettings子类
         val webSettings: WebSettings = wv_article.settings
-
-        //如果访问的页面中要与Javascript交互，则webview必须设置支持Javascript
 
         //如果访问的页面中要与Javascript交互，则webview必须设置支持Javascript
         webSettings.javaScriptEnabled = true

@@ -1,5 +1,6 @@
 package com.aj.article_module.adapter
 
+import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import android.util.TypedValue
 import android.view.ViewGroup
@@ -17,6 +18,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.google.android.flexbox.FlexboxLayout
+import kotlin.random.Random
 
 /**
  *
@@ -28,6 +30,14 @@ import com.google.android.flexbox.FlexboxLayout
  */
 
 class SystemTreeFMAdapter : BaseQuickAdapter<SystemTreeBean, BaseViewHolder> {
+
+    private val colors = intArrayOf(
+        R.color.base_color_gray,
+        R.color.base_color_757575,
+        R.color.base_color_455A64,
+        R.color.base_color_9E9E9E,
+        R.color.base_color_BDBDBD
+    )
 
     constructor(layoutResId: Int = R.layout.article_item_system_tree_item) : super(
         layoutResId
@@ -56,7 +66,7 @@ class SystemTreeFMAdapter : BaseQuickAdapter<SystemTreeBean, BaseViewHolder> {
             articleItemSystemTreeItemBinding.systemTreeBean = item
         }
         var flexLayout: FlexboxLayout = holder.getView(R.id.fbl_tab)
-        if (item.children != null && item.children.isNotEmpty()) {
+        if ( item.children.isNotEmpty()) {
             flexLayout.removeAllViews()
             item.children.forEach { systemTreeChildren ->
                 val tabItem = TextView(context)
@@ -65,21 +75,23 @@ class SystemTreeFMAdapter : BaseQuickAdapter<SystemTreeBean, BaseViewHolder> {
                     TypedValue.COMPLEX_UNIT_PX,
                     context.resources.getDimension(R.dimen.base_text_sp_14)
                 )
-                tabItem.background = ContextCompatUtils.getDrawable(context,R.drawable.article_bg_theme_round_2)
+                val gradientDrawable : GradientDrawable = ContextCompatUtils.getDrawable(context,R.drawable.article_bg_theme_round_2) as GradientDrawable
+                gradientDrawable.setColor(ContextCompatUtils.getColor(context,colors[Random.nextInt(colors.size )]))
+                tabItem.background =gradientDrawable
                 var vlp: FlexboxLayout.LayoutParams = FlexboxLayout.LayoutParams(
                     ViewGroup.LayoutParams.WRAP_CONTENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT
                 )
                 vlp.setMargins(
+                    ScreenUtils.dp2px(context, 2f),
                     ScreenUtils.dp2px(context, 1f),
-                    ScreenUtils.dp2px(context, 1f),
-                    ScreenUtils.dp2px(context, 1f),
+                    ScreenUtils.dp2px(context, 2f),
                     ScreenUtils.dp2px(context, 1f)
                 )
                 tabItem.setPadding(
+                    ScreenUtils.dp2px(context, 2f),
                     ScreenUtils.dp2px(context, 1f),
-                    ScreenUtils.dp2px(context, 1f),
-                    ScreenUtils.dp2px(context, 1f),
+                    ScreenUtils.dp2px(context, 2f),
                     ScreenUtils.dp2px(context, 1f)
                 )
                 tabItem.layoutParams = vlp

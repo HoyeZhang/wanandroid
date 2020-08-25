@@ -37,8 +37,10 @@ class ArticlesItemProvider : BaseItemProvider<HomeListDataType>() {
     private val colors = intArrayOf(
         R.color.base_color_deep_gray,
         R.color.base_color_gray,
-        R.color.base_colorAccent,
-        R.color.base_colorPrimary
+        R.color.base_color_757575,
+        R.color.base_color_455A64,
+        R.color.base_color_9E9E9E,
+        R.color.base_color_BDBDBD
     )
 
     override val itemViewType: Int

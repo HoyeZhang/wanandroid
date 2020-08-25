@@ -9,14 +9,23 @@ import com.alibaba.android.arouter.facade.annotation.Route
 
 @Route(path = ArouterUrlManage.DATAMODULEUSERSERVICE, name = "用户服务")
 class UserServiceImpl : UserService {
-    override fun addUser(username: String,password :String) {
-
-        var userdao = UserDataProvide()
-        userdao.addUser(username, password);
-    }
 
     override fun init(context: Context?) {
 
     }
 
+    override fun addUser(username: String,password :String) {
+        var userdao = UserDataProvide()
+        userdao.addUser(username, password)
+    }
+
+    override fun queryAll() {
+        var userdao = UserDataProvide()
+        userdao.queryAll()
+    }
+
+    override fun queryLoginUser() {
+        var userdao = UserDataProvide()
+        userdao.queryLoginUser()
+    }
 }

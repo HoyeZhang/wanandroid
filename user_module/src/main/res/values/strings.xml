@@ -1,5 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="app_name" tools:ignore="ResourceName">user_module</string>
+    <string name="user_app_name" >玩 Android</string>
     <string name="user_account">账号</string>
+    <string name="user_login">登录</string>
     <string name="user_password">密码</string>
 </resources>

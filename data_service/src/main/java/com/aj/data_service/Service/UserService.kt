@@ -10,4 +10,7 @@ import com.alibaba.android.arouter.facade.template.IProvider
 interface UserService : IProvider {
    fun addUser(userName :String,password:String)
 
+   fun queryAll()
+
+   fun queryLoginUser()
 }

@@ -1,7 +1,5 @@
 package com.aj.data_module.dataprovide
 
-import android.content.Context
-import android.util.Log
 import com.aj.data_module.bean.User
 import com.aj.data_module.database.AppDataBase
 
@@ -10,11 +8,17 @@ import com.aj.data_module.database.AppDataBase
  */
 class UserDataProvide {
 
-    var userDao =  AppDataBase.getDBInstance().userDao()
+    private var userDao =  AppDataBase.getDBInstance().userDao()
     fun addUser(username : String,password :String){
-
         var user =User(username = username,password = password);
-        userDao?.insertAll(user)
+        userDao?.insertUser(user)
+    }
 
+    fun queryAll() :List<User?>?{
+       return userDao?.queryAll()
+    }
+
+    fun queryLoginUser() :User?{
+        return userDao?.queryLoginUser()
     }
 }

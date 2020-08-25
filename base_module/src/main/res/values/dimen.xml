@@ -2,6 +2,9 @@
 <resources>
     <dimen name="base_text_sp_14">14sp</dimen>
     <dimen name="base_text_sp_17">17sp</dimen>
+    <dimen name="base_text_sp_20">20sp</dimen>
+    <dimen name="base_text_sp_24">24sp</dimen>
+    <dimen name="base_text_sp_25">25sp</dimen>
 
     <dimen name="base_dp_1dp">1dp</dimen>
     <dimen name="base_dp_2dp">2dp</dimen>
@@ -11,4 +14,10 @@
     <dimen name="base_dp_7dp">7dp</dimen>
     <dimen name="base_dp_10dp">10dp</dimen>
     <dimen name="base_dp_14dp">14dp</dimen>
+    <dimen name="base_dp_15dp">15dp</dimen>
+    <dimen name="base_dp_20dp">20dp</dimen>
+    <dimen name="base_dp_25dp">25dp</dimen>
+    <dimen name="base_dp_30dp">30dp</dimen>
+    <dimen name="base_dp_35dp">35dp</dimen>
+    <dimen name="base_dp_40dp">40dp</dimen>
 </resources>

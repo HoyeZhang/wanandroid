@@ -14,5 +14,9 @@ data class User(
     var username: String? = null,
 
     @ColumnInfo(name = "pass_word")
-    var password: String? = null
+    var password: String? = null,
+
+    //标记是否登录  1 登录用户  0  未登录
+    @ColumnInfo(name = "isLogin")
+    var isLogin: Int? = 0
 )
