@@ -78,6 +78,7 @@ class SystemTreeFMAdapter : BaseQuickAdapter<SystemTreeBean, BaseViewHolder> {
                 val gradientDrawable : GradientDrawable = ContextCompatUtils.getDrawable(context,R.drawable.article_bg_theme_round_2) as GradientDrawable
                 gradientDrawable.setColor(ContextCompatUtils.getColor(context,colors[Random.nextInt(colors.size )]))
                 tabItem.background =gradientDrawable
+                tabItem.setTextColor( ContextCompatUtils.getColor(context,R.color.base_colorWhite))
                 var vlp: FlexboxLayout.LayoutParams = FlexboxLayout.LayoutParams(
                     ViewGroup.LayoutParams.WRAP_CONTENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT
@@ -89,10 +90,10 @@ class SystemTreeFMAdapter : BaseQuickAdapter<SystemTreeBean, BaseViewHolder> {
                     ScreenUtils.dp2px(context, 1f)
                 )
                 tabItem.setPadding(
+                    ScreenUtils.dp2px(context, 2.5f),
                     ScreenUtils.dp2px(context, 2f),
-                    ScreenUtils.dp2px(context, 1f),
-                    ScreenUtils.dp2px(context, 2f),
-                    ScreenUtils.dp2px(context, 1f)
+                    ScreenUtils.dp2px(context, 2.5f),
+                    ScreenUtils.dp2px(context, 2f)
                 )
                 tabItem.layoutParams = vlp
                 flexLayout.addView(tabItem)
