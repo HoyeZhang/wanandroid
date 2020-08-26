@@ -1,5 +1,6 @@
 package com.aj.data_module.dataprovide
 
+import android.util.Log
 import com.aj.data_module.bean.User
 import com.aj.data_module.database.AppDataBase
 
@@ -10,7 +11,7 @@ class UserDataProvide {
 
     private var userDao =  AppDataBase.getDBInstance().userDao()
     fun addUser(username : String,password :String){
-        var user =User(username = username,password = password);
+        var user =User(username = username,password = password,isLogin = 1)
         userDao?.insertUser(user)
     }
 

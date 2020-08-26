@@ -1,6 +1,6 @@
 package com.aj.data_service.Service
 
-import android.content.Context
+import com.aj.data_service.bean.DataUser
 import com.alibaba.android.arouter.facade.template.IProvider
 
 /**
@@ -12,5 +12,5 @@ interface UserService : IProvider {
 
    fun queryAll()
 
-   fun queryLoginUser()
+   fun queryLoginUser() : DataUser?
 }

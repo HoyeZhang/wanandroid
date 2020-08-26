@@ -5,6 +5,7 @@ import android.util.Log
 import com.aj.data_module.dataprovide.UserDataProvide
 import com.aj.data_service.ArouterUrlManage
 import com.aj.data_service.Service.UserService
+import com.aj.data_service.bean.DataUser
 import com.alibaba.android.arouter.facade.annotation.Route
 
 @Route(path = ArouterUrlManage.DATAMODULEUSERSERVICE, name = "用户服务")
@@ -24,8 +25,10 @@ class UserServiceImpl : UserService {
         userdao.queryAll()
     }
 
-    override fun queryLoginUser() {
+    override fun queryLoginUser() : DataUser {
         var userdao = UserDataProvide()
-        userdao.queryLoginUser()
+        var user = userdao.queryLoginUser()
+
+        return DataUser(username = user?.username,password = user?.password)
     }
 }

@@ -13,7 +13,7 @@ interface  UserDao {
     fun queryAll(): List<User?>?
 
     @Query("select * from users where isLogin=1")
-    fun queryLoginUser(): User?
+    fun queryLoginUser():  User?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertUser(vararg users: User?)
@@ -21,7 +21,7 @@ interface  UserDao {
     @Delete
     fun delete(user: User?)
 
-    @Query("update  users set isLogin = 0 where isLogin=1")
+    @Query("update users set isLogin = 0 where isLogin=1")
     fun updateAllNoLogin()
 
 }
