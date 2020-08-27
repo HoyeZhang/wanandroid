@@ -47,7 +47,7 @@ class ProjectFragment : BaseVMFragment() {
             }
 
             val viewPagerAdapter = ViewPagerAdapter(childFragmentManager, lifecycle,fragments)
-
+            vp_project.isSaveEnabled = false
             vp_project.offscreenPageLimit = it.size + 1
             vp_project.adapter = viewPagerAdapter
             projectTabLayout.tabMode = TabLayout.MODE_SCROLLABLE
