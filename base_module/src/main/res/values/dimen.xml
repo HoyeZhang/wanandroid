@@ -5,6 +5,7 @@
     <dimen name="base_text_sp_20">20sp</dimen>
     <dimen name="base_text_sp_24">24sp</dimen>
     <dimen name="base_text_sp_25">25sp</dimen>
+    <dimen name="base_text_sp_27">27sp</dimen>
 
     <dimen name="base_dp_1dp">1dp</dimen>
     <dimen name="base_dp_2dp">2dp</dimen>
@@ -20,4 +21,7 @@
     <dimen name="base_dp_30dp">30dp</dimen>
     <dimen name="base_dp_35dp">35dp</dimen>
     <dimen name="base_dp_40dp">40dp</dimen>
+    <dimen name="base_dp_45dp">45dp</dimen>
+    <dimen name="base_dp_50dp">50dp</dimen>
+    <dimen name="base_dp_100dp">100dp</dimen>
 </resources>
