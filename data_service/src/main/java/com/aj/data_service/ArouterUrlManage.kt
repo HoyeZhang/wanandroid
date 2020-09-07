@@ -23,6 +23,7 @@ object ArouterUrlManage {
      *用户ui模块
      */
     const val USER_LOGINACTIVITY = USERUI + "/LoginActivity"
+    const val USER_REGISTERED_ACTIVITY = USERUI + "/RegisteredActivity"
     const val USER_FRAGEMNT = USERUI + "/UserFragment"
 
     /**

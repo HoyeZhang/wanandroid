@@ -5,6 +5,7 @@
 
     <data>
 
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -32,7 +33,7 @@
             android:id="@+id/tv_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/user_login"
+            android:text="@string/user_registered"
             android:textColor="@color/base_text_gray_color"
             android:textSize="@dimen/base_text_sp_20"
             android:layout_marginTop="@dimen/base_dp_25dp"
@@ -43,7 +44,7 @@
             android:id="@+id/tv_login_info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="登录后体验更多功能"
+            android:text="注册后体验更多功能"
             android:textColor="@color/base_text_gray_color"
             android:textSize="@dimen/base_text_sp_14"
             android:layout_marginTop="@dimen/base_dp_4dp"
@@ -93,7 +94,7 @@
             android:id="@+id/bt_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/user_login"
+            android:text="@string/user_registered"
             android:background="@drawable/user_bg_theme_round_15"
             app:layout_constraintLeft_toLeftOf="parent"
             android:textColor="@color/base_colorWhite"
@@ -103,10 +104,10 @@
 
 
         <TextView
-            android:id="@+id/tv_goto_registered"
+            android:id="@+id/tv_goto_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="还没有账号，去注册 >>"
+            android:text="已有账号，去登录 >>"
             android:textColor="@color/base_text_gray_color"
             android:textSize="@dimen/base_text_sp_14"
             app:layout_constraintLeft_toRightOf="@+id/bt_login"

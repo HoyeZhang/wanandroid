@@ -1,7 +1,6 @@
-package com.aj.user_module.ui.login
+package com.aj.user_module.ui.registered
 
 
-import android.util.Log
 import android.view.View
 import androidx.lifecycle.Observer
 import com.aj.base_module.ui.activity.BaseDataBindVMActivity
@@ -10,23 +9,23 @@ import com.aj.base_module.ui.viewmodel.initViewModel
 import com.aj.data_service.ArouterPageManger
 import com.aj.data_service.ArouterUrlManage
 import com.aj.user_module.R
-import com.aj.user_module.databinding.UserActivityLoginBinding
+import com.aj.user_module.databinding.UserActivityRegisteredBinding
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.alibaba.android.arouter.launcher.ARouter
-import kotlinx.android.synthetic.main.user_activity_login.*
+
+import kotlinx.android.synthetic.main.user_activity_registered.*
 
 /**
  * @author zhy
  * @time 2020/5/17.
  */
-@Route(path = ArouterUrlManage.USER_LOGINACTIVITY)
-class LoginActivity : BaseDataBindVMActivity<UserActivityLoginBinding>(), View.OnClickListener {
+@Route(path = ArouterUrlManage.USER_REGISTERED_ACTIVITY)
+class RegisteredActivity : BaseDataBindVMActivity<UserActivityRegisteredBinding>() , View.OnClickListener {
 
 
-    override fun getLayoutId(): Int = R.layout.user_activity_login
+    override fun getLayoutId(): Int = R.layout.user_activity_registered
     private val mViewModel by lazy {
         initViewModel(
-            this, LoginViewModel::class, LoginRepository::class
+            this, RegistersdViewModel::class, RegisteredRepository::class
         )
     }
 
@@ -44,22 +43,21 @@ class LoginActivity : BaseDataBindVMActivity<UserActivityLoginBinding>(), View.O
     }
 
     override fun initData() {
-
-
+        bt_login.setOnClickListener {
+            mViewModel.login(et_account.text.toString(),et_password.text.toString())
+        }
     }
 
     override fun onClick(v: View?) {
-        when (v?.id) {
-            R.id.bt_login -> {
-                mViewModel.login(et_account.text.toString(), et_password.text.toString())
+        when(v?.id){
+            R.id.tv_goto_login ->{
+                ArouterPageManger.navigation(this, ArouterUrlManage.USER_LOGINACTIVITY)
             }
+            else ->{
 
-            R.id.tv_goto_registered -> {
-                ArouterPageManger.navigation(this, ArouterUrlManage.USER_REGISTERED_ACTIVITY)
             }
-
-            else -> {}
         }
+
     }
 
 
