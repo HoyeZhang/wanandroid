@@ -11,11 +11,16 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@android:color/white"
+        android:background="@drawable/user_bg_white_round_25"
         android:orientation="vertical"
         android:paddingLeft="@dimen/dp_10"
         android:paddingRight="@dimen/dp_10"
-        android:fitsSystemWindows="true">
+        android:fitsSystemWindows="true"
+        android:layout_marginLeft="@dimen/base_dp_25dp"
+        android:layout_marginRight="@dimen/base_dp_25dp"
+        android:layout_marginTop="@dimen/base_dp_45dp"
+        android:layout_marginBottom="@dimen/base_dp_45dp"
+        android:elevation="@dimen/base_dp_2dp">
 
         <TextView
             android:id="@+id/tv_app"
@@ -91,11 +96,11 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_password" />
 
         <Button
-            android:id="@+id/bt_login"
+            android:id="@+id/bt_registered"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/user_registered"
-            android:background="@drawable/user_bg_theme_round_15"
+            android:background="@drawable/user_bg_theme_round_25"
             app:layout_constraintLeft_toLeftOf="parent"
             android:textColor="@color/base_colorWhite"
             android:textSize="@dimen/base_text_sp_14"

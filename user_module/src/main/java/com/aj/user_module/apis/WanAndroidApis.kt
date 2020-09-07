@@ -15,5 +15,10 @@ interface WanAndroidApis {
     @POST("user/login")
     fun login(@QueryMap param: Map<String, String>): Call<BaseResponse<LoginBean>>
 
+    /**
+     * 注册
+     */
+    @POST("user/register")
+    fun registered(@QueryMap param: Map<String, String>): Call<BaseResponse<LoginBean>>
 
 }

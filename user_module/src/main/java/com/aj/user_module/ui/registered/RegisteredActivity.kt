@@ -25,7 +25,7 @@ class RegisteredActivity : BaseDataBindVMActivity<UserActivityRegisteredBinding>
     override fun getLayoutId(): Int = R.layout.user_activity_registered
     private val mViewModel by lazy {
         initViewModel(
-            this, RegistersdViewModel::class, RegisteredRepository::class
+            this, RegisteredViewModel::class, RegisteredRepository::class
         )
     }
 
@@ -43,15 +43,15 @@ class RegisteredActivity : BaseDataBindVMActivity<UserActivityRegisteredBinding>
     }
 
     override fun initData() {
-        bt_login.setOnClickListener {
-            mViewModel.login(et_account.text.toString(),et_password.text.toString())
-        }
     }
 
     override fun onClick(v: View?) {
         when(v?.id){
             R.id.tv_goto_login ->{
                 ArouterPageManger.navigation(this, ArouterUrlManage.USER_LOGINACTIVITY)
+            }
+            R.id.bt_registered ->{
+                mViewModel.registered(et_account.text.toString(),et_password.text.toString())
             }
             else ->{
 

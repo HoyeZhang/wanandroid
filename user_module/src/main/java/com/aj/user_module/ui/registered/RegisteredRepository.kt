@@ -14,4 +14,12 @@ class RegisteredRepository : BaseRepository() {
         params["password"] = password
         RetrofitManager.create(WanAndroidApis::class.java).login(params).await()
     }
+
+    suspend fun registered(username: String, password: String) = withContext(Dispatchers.IO) {
+        val params = hashMapOf<String, String>()
+        params["username"] = username
+        params["password"] = password
+        params["repassword"] = password
+        RetrofitManager.create(WanAndroidApis::class.java).registered(params).await()
+    }
 }

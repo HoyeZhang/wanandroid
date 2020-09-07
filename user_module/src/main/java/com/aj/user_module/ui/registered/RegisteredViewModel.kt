@@ -9,7 +9,7 @@ import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.alibaba.android.arouter.launcher.ARouter
 
 
-class RegistersdViewModel(private val repository: RegisteredRepository) : BaseViewModel() {
+class RegisteredViewModel(private val repository: RegisteredRepository) : BaseViewModel() {
     var loginBean = MutableLiveData<LoginBean>()
 
 
@@ -24,6 +24,14 @@ class RegistersdViewModel(private val repository: RegisteredRepository) : BaseVi
 
             userService?.addUser(username,password)
 
+        }
+    }
+
+    fun registered(username: String, password: String) {
+        ARouter.getInstance().inject(this);
+        launch {
+            loginBean.value = repository.registered(username, password).data
+            // TODO: 2020/9/7 自动登录 
         }
     }
 }
