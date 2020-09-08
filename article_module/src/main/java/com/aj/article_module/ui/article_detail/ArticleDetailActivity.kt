@@ -66,8 +66,6 @@ class ArticleDetailActivity : BaseActivity() {
 
 
         //其他细节操作
-
-        //其他细节操作
         webSettings.cacheMode = WebSettings.LOAD_CACHE_ELSE_NETWORK //关闭webview中缓存
 
         webSettings.allowFileAccess = true //设置可以访问文件

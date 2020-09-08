@@ -34,12 +34,19 @@ class RegisteredActivity : BaseDataBindVMActivity<UserActivityRegisteredBinding>
     }
 
     override fun initView() {
+        setSupportActionBar(toolbar);
+        supportActionBar?.setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener {
+            this.finish()
+        }
+
         mViewModel.loginBean.observe(this, Observer { loginBean ->
             if (loginBean != null) {
                 finish()
             }
         })
-
+        tv_goto_login.setOnClickListener(this)
+        bt_registered.setOnClickListener(this)
     }
 
     override fun initData() {

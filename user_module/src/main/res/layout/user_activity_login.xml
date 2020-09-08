@@ -6,20 +6,44 @@
     <data>
 
     </data>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/user_bg_white_round_25"
+        android:orientation="vertical">
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/AppBarLayout01"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="false"
+            app:elevation="0dp">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                app:titleTextColor="@color/base_colorWhite"
+                android:layout_height="?attr/actionBarSize"
+                app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                app:layout_scrollFlags="scroll|enterAlways"
+                />
+
+        </com.google.android.material.appbar.AppBarLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:orientation="vertical"
         android:paddingLeft="@dimen/dp_10"
         android:paddingRight="@dimen/dp_10"
         android:fitsSystemWindows="true"
         android:layout_marginLeft="@dimen/base_dp_25dp"
         android:layout_marginRight="@dimen/base_dp_25dp"
+        android:paddingTop="@dimen/base_dp_20dp"
+        android:paddingBottom="@dimen/base_dp_20dp"
         android:layout_marginTop="@dimen/base_dp_45dp"
         android:layout_marginBottom="@dimen/base_dp_45dp"
-        android:elevation="@dimen/base_dp_2dp">
+
+       >
 
     <TextView
             android:id="@+id/tv_app"
@@ -28,7 +52,7 @@
             android:text="@string/user_app_name"
             android:textColor="@color/base_colorPrimaryDark"
             android:textSize="@dimen/base_text_sp_27"
-            android:layout_marginTop="@dimen/base_dp_100dp"
+            android:layout_marginTop="@dimen/base_dp_10dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -73,6 +97,7 @@
             android:inputType="text"
             app:layout_constraintLeft_toLeftOf="parent"
             android:layout_marginRight="@dimen/base_dp_35dp"
+            android:hint="@string/user_input_account"
             app:layout_constraintTop_toBottomOf="@+id/tv_account" />
 
         <TextView
@@ -92,6 +117,7 @@
             android:layout_height="45dp"
             app:layout_constraintLeft_toLeftOf="parent"
             android:layout_marginRight="@dimen/base_dp_35dp"
+            android:hint="@string/user_input_password"
             app:layout_constraintTop_toBottomOf="@+id/tv_password" />
 
         <Button
@@ -120,7 +146,13 @@
             app:layout_constraintBottom_toBottomOf="@+id/bt_login"/>
 
 
+        <com.aj.user_module.view.WaveBgView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base_dp_100dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
+    </LinearLayout>
 </layout>

@@ -12,7 +12,6 @@ import com.aj.data_service.ArouterUrlManage
 import com.aj.user_module.R
 import com.aj.user_module.databinding.UserActivityLoginBinding
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.alibaba.android.arouter.launcher.ARouter
 import kotlinx.android.synthetic.main.user_activity_login.*
 
 /**
@@ -35,12 +34,19 @@ class LoginActivity : BaseDataBindVMActivity<UserActivityLoginBinding>(), View.O
     }
 
     override fun initView() {
+        setSupportActionBar(toolbar);
+        supportActionBar?.setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener {
+            this.finish()
+        }
+
         mViewModel.loginBean.observe(this, Observer { loginBean ->
             if (loginBean != null) {
                 finish()
             }
         })
-
+        bt_login.setOnClickListener(this)
+        tv_goto_registered.setOnClickListener(this)
     }
 
     override fun initData() {
