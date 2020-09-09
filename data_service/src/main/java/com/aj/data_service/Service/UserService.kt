@@ -13,4 +13,6 @@ interface UserService : IProvider {
    fun queryAll()
 
    fun queryLoginUser() : DataUser?
+
+   fun clearLoginUser()
 }

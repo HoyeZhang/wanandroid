@@ -79,4 +79,6 @@ dependencies {
 
     //流布局
     implementation 'com.google.android:flexbox:2.0.1'
+
+    implementation 'com.tencent.bugly:crashreport:latest.release'
 }

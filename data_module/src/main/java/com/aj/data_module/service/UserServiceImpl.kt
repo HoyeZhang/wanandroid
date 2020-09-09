@@ -31,4 +31,10 @@ class UserServiceImpl : UserService {
 
         return DataUser(username = user?.username,password = user?.password)
     }
+
+    override fun clearLoginUser()  {
+        var userdao = UserDataProvide()
+        userdao.clearLoginUser()
+
+    }
 }

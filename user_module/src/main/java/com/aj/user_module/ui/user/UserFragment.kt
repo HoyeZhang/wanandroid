@@ -58,6 +58,10 @@ class UserFragment : BaseDataBindVMFragment<UserFragmentUserBinding>() {
 
         dataUser = userService?.queryLoginUser()!!
         tv_username.text = dataUser!!.username
+
+        tv_logout.setOnClickListener {
+            userService!!.clearLoginUser()
+        }
     }
 
 }

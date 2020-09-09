@@ -2,9 +2,12 @@ package com.aj.ui.main
 
 import android.app.Application
 import com.aj.base_module.BuildConfig
+import com.aj.base_module.net.Const
+
 import com.aj.ui.init.InitDataModuleContext
 
 import com.alibaba.android.arouter.launcher.ARouter
+import com.tencent.bugly.crashreport.CrashReport
 
 class App : Application() {
 
@@ -20,5 +23,8 @@ class App : Application() {
         ARouter.init(this)
 
         InitDataModuleContext(this)
+
+        //bugly初始化
+        CrashReport.initCrashReport(applicationContext, Const.BUGLY_APP_ID, true);
     }
 }

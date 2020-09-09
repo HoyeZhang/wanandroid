@@ -22,4 +22,8 @@ class UserDataProvide {
     fun queryLoginUser() :User?{
         return userDao?.queryLoginUser()
     }
+
+    fun clearLoginUser(){
+         userDao?.updateAllNoLogin()
+    }
 }

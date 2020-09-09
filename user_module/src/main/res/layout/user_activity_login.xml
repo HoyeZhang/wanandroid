@@ -15,6 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fitsSystemWindows="false"
+
             app:elevation="0dp">
 
             <androidx.appcompat.widget.Toolbar
@@ -42,7 +43,6 @@
         android:paddingBottom="@dimen/base_dp_20dp"
         android:layout_marginTop="@dimen/base_dp_45dp"
         android:layout_marginBottom="@dimen/base_dp_45dp"
-
        >
 
     <TextView
@@ -146,12 +146,6 @@
             app:layout_constraintBottom_toBottomOf="@+id/bt_login"/>
 
 
-        <com.aj.user_module.view.WaveBgView
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/base_dp_100dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>

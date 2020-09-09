@@ -1,13 +1,15 @@
 package com.aj.user_module.view
 
+import android.R.attr.end
+import android.R.attr.start
 import android.content.Context
-import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.Paint
-import android.graphics.PointF
+import android.graphics.*
 import android.util.AttributeSet
 import android.util.Log
 import android.view.View
+import com.aj.base_module.utils.ContextCompatUtils
+import com.aj.user_module.R
+import kotlin.random.Random
 
 
 /**
@@ -22,7 +24,21 @@ class WaveBgView(context: Context?, attrs: AttributeSet?) :
     View(context, attrs) {
 
     private var color: Int = Color.RED
-    private var paint: Paint = Paint()
+    private var paint: Paint = Paint().apply {
+        isAntiAlias = true
+        isDither = true
+        isFilterBitmap = true
+    }
+
+    private val colors = intArrayOf(
+        R.color.base_colorAccent,
+        R.color.base_colorPrimary,
+        R.color.base_colorPrimaryDark,
+        R.color.base_color_BDBDBD,
+        R.color.base_color_cyan,
+        R.color.base_color_blue
+    )
+
 
     init {
         paint.color = color
@@ -32,30 +48,32 @@ class WaveBgView(context: Context?, attrs: AttributeSet?) :
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
         var radius = 3f
-        var startValue: PointF = PointF(left.toFloat()- radius *3, bottom.toFloat()- radius *3)
-        var endValue: PointF = PointF(right.toFloat()- radius *3, bottom.toFloat()- radius *3)
-        Log.d("PointF1坐标", "yyy" + startValue.y + "xxxxx" + startValue.x)
-        Log.d("PointF2坐标", "yyy" + endValue.y + "xxxxx" + endValue.x)
-        var pointFs = getPointFs(startValue, endValue, 8)
-        for (pointF in pointFs) {
-
-            Log.d("圆坐标", "yyy" + pointF.y + "xxxxx" + pointF.x)
-            canvas?.drawCircle(pointF.x, pointF.y - radius, radius, paint)
+        var startValue: PointF = PointF(radius *3, height - radius *3)
+        var endValue: PointF = PointF(width- radius *3, height - radius *3)
+        var controlPointF = PointF(width.toFloat()/4,0f)
+        var pointFs = getPointFs(startValue, endValue,controlPointF, 15)
+        var  radiusRandom = radius
+            for (pointF in pointFs) {
+            paint.color = ContextCompatUtils.getColor(context,colors[Random.nextInt(colors.size)])
+                radiusRandom = radius + Random.nextInt(15)
+            canvas?.drawCircle(pointF.x, pointF.y - radiusRandom, radiusRandom, paint)
         }
+
+
     }
 
+    /**
+     * 获取贝塞尔点的位置
+     */
+    private fun getPointFs(startValue: PointF, endValue: PointF,controlPointF: PointF,  count: Int): MutableList<PointF> {
 
-    private fun getPointFs(startValue: PointF, endValue: PointF, count: Int): MutableList<PointF> {
-        val pointX = (startValue.x + endValue.x) / 2
-        val pointY = (startValue.y - startValue.y / 2) / 2
-        val controllPointF = PointF(pointX, pointY)
         var pointFs: MutableList<PointF> = ArrayList()
         for (index in 1..count) {
             var t: Float = index.toFloat() / count.toFloat()
             val x =
-                ((1 - t) * (1 - t) * startValue.x + 2 * t * (1 - t) * controllPointF.x + t * t * endValue.x)
+                ((1 - t) * (1 - t) * startValue.x + 2 * t * (1 - t) * controlPointF.x + t * t * endValue.x)
             val y =
-                ((1 - t) * (1 - t) * startValue.y + 2 * t * (1 - t) * controllPointF.y + t * t * endValue.y)
+                ((1 - t) * (1 - t) * startValue.y + 2 * t * (1 - t) * controlPointF.y + t * t * endValue.y)
 
             pointFs.add(PointF(x, y))
         }
