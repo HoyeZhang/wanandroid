@@ -11,7 +11,7 @@ import com.alibaba.android.arouter.launcher.ARouter
 
 class RegisteredViewModel(private val repository: RegisteredRepository) : BaseViewModel() {
     var loginBean = MutableLiveData<LoginBean>()
-
+    var registeredBean = MutableLiveData<LoginBean>()
 
     @Autowired(name = ArouterUrlManage.DATAMODULEUSERSERVICE)
     @JvmField
@@ -30,7 +30,7 @@ class RegisteredViewModel(private val repository: RegisteredRepository) : BaseVi
     fun registered(username: String, password: String) {
         ARouter.getInstance().inject(this);
         launch {
-            loginBean.value = repository.registered(username, password).data
+            registeredBean.value = repository.registered(username, password).data
             // TODO: 2020/9/7 自动登录 
         }
     }

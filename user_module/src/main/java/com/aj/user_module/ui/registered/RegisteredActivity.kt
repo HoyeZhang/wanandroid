@@ -45,6 +45,11 @@ class RegisteredActivity : BaseDataBindVMActivity<UserActivityRegisteredBinding>
                 finish()
             }
         })
+        mViewModel.registeredBean.observe(this, Observer { loginBean ->
+            if (loginBean != null) {
+                mViewModel.login(et_account.text.toString(),et_password.text.toString())
+            }
+        })
         tv_goto_login.setOnClickListener(this)
         bt_registered.setOnClickListener(this)
     }
@@ -56,6 +61,7 @@ class RegisteredActivity : BaseDataBindVMActivity<UserActivityRegisteredBinding>
         when(v?.id){
             R.id.tv_goto_login ->{
                 ArouterPageManger.navigation(this, ArouterUrlManage.USER_LOGINACTIVITY)
+                finish()
             }
             R.id.bt_registered ->{
                 mViewModel.registered(et_account.text.toString(),et_password.text.toString())

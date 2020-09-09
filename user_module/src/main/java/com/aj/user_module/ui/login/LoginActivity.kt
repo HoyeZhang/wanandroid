@@ -62,6 +62,7 @@ class LoginActivity : BaseDataBindVMActivity<UserActivityLoginBinding>(), View.O
 
             R.id.tv_goto_registered -> {
                 ArouterPageManger.navigation(this, ArouterUrlManage.USER_REGISTERED_ACTIVITY)
+                finish()
             }
 
             else -> {}
