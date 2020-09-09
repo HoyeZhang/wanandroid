@@ -15,14 +15,26 @@ android {
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+    signingConfigs {
+        config {
+            keyAlias "wanandroid"
+            keyPassword "wanandroid"
+            storeFile file('../wanandroid.jks')
+            storePassword "wanandroid123"
+        }
+    }
+
+
     buildTypes {
         release {
             buildConfigField "boolean", "LOG_DEBUG", "false"
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
         }
         debug{
             buildConfigField "boolean", "LOG_DEBUG", "true"
+            signingConfig signingConfigs.config
         }
     }
 
