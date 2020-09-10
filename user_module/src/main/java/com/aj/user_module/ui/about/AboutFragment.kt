@@ -30,10 +30,10 @@ class AboutFragment : BaseDataBindVMFragment<UserFragmentAboutBinding>() {
     }
 
     override fun initView() {
-        tv_version.text= "版本 "+PackageUtils.getVersionName(mActivity)
+        tv_version.text= "版本: "+PackageUtils.getVersionName(mActivity)
         tv_app_name.text= PackageUtils.getAppName(mActivity)
-        tv_mail.text = "联系我 " + R.string.user_mail
-        tv_code.text = "仓库地址 " + R.string.user_code_url
+        tv_mail.text = "联系我: " + resources.getString(R.string.user_mail)
+        tv_code.text = "仓库地址: " + resources.getString(R.string.user_code_url)
     }
 
 }
