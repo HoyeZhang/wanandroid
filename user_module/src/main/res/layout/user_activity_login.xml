@@ -118,6 +118,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             android:layout_marginRight="@dimen/base_dp_35dp"
             android:hint="@string/user_input_password"
+            android:inputType="textPassword"
             app:layout_constraintTop_toBottomOf="@+id/tv_password" />
 
         <Button

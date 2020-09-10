@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="userTabChooseBean"
+            type="com.aj.user_module.bean.UserTabChooseBean" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/user_bg_white_round_25"
+        android:elevation="@dimen/base_dp_2dp">
+
+        <ImageView
+            android:id="@+id/iv_tab"
+            android:layout_width="@dimen/base_dp_35dp"
+            android:layout_height="@dimen/base_dp_35dp"
+            app:image_url="@{userTabChooseBean.image}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/base_text_main_color"
+            android:textSize="@dimen/sp_14"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:text="@{userTabChooseBean.name}"
+            app:layout_constraintTop_toBottomOf="@+id/iv_tab" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

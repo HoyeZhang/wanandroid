@@ -2,6 +2,7 @@ package com.aj.data_module.service
 
 import android.content.Context
 import android.util.Log
+import com.aj.data_module.bean.User
 import com.aj.data_module.dataprovide.UserDataProvide
 import com.aj.data_service.ArouterUrlManage
 import com.aj.data_service.Service.UserService
@@ -15,24 +16,29 @@ class UserServiceImpl : UserService {
 
     }
 
-    override fun addUser(username: String,password :String) {
+    override fun addUser(username: String, password: String) {
         var userdao = UserDataProvide()
         userdao.addUser(username, password)
     }
 
-    override fun queryAll() {
+    override fun queryAll(): ArrayList<DataUser> {
         var userdao = UserDataProvide()
-        userdao.queryAll()
+        var userList: List<User?>? = userdao.queryAll()
+        var dataUser: ArrayList<DataUser> = ArrayList()
+        userList?.forEach {
+            dataUser.add(DataUser(username = it?.username, password = it?.password))
+        }
+        return dataUser
     }
 
-    override fun queryLoginUser() : DataUser {
+    override fun queryLoginUser(): DataUser {
         var userdao = UserDataProvide()
         var user = userdao.queryLoginUser()
 
-        return DataUser(username = user?.username,password = user?.password)
+        return DataUser(username = user?.username, password = user?.password)
     }
 
-    override fun clearLoginUser()  {
+    override fun clearLoginUser() {
         var userdao = UserDataProvide()
         userdao.clearLoginUser()
 

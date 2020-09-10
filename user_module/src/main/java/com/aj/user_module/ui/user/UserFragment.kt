@@ -3,6 +3,8 @@ package com.aj.user_module.ui.user
 import android.os.Bundle
 import android.os.Parcel
 import android.os.Parcelable
+import android.view.View
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.aj.base_module.ui.fragment.BaseDataBindVMFragment
 import com.aj.base_module.ui.viewmodel.BaseViewModel
 import com.aj.base_module.ui.viewmodel.initViewModel
@@ -11,6 +13,8 @@ import com.aj.data_service.ArouterUrlManage
 import com.aj.data_service.Service.UserService
 import com.aj.data_service.bean.DataUser
 import com.aj.user_module.R
+import com.aj.user_module.adapter.UserTabChooseAdapter
+import com.aj.user_module.bean.UserTabChooseBean
 import com.aj.user_module.databinding.UserFragmentUserBinding
 import com.aj.user_module.ui.login.LoginRepository
 import com.aj.user_module.ui.login.LoginViewModel
@@ -39,6 +43,17 @@ class UserFragment : BaseDataBindVMFragment<UserFragmentUserBinding>() {
         )
     }
 
+    private val userTabChooseAdapter: UserTabChooseAdapter by lazy {
+        UserTabChooseAdapter()
+    }
+
+    private val staggeredGridLayoutManager: StaggeredGridLayoutManager by lazy {
+        StaggeredGridLayoutManager(
+            3,
+            StaggeredGridLayoutManager.VERTICAL
+        )
+    }
+
     override fun getViewModel(): BaseViewModel {
         return mViewModel
     }
@@ -56,12 +71,65 @@ class UserFragment : BaseDataBindVMFragment<UserFragmentUserBinding>() {
             ArouterPageManger.navigation(mActivity, ArouterUrlManage.USER_LOGINACTIVITY)
         }
 
-        dataUser = userService?.queryLoginUser()!!
-        tv_username.text = dataUser!!.username
-
         tv_logout.setOnClickListener {
             userService!!.clearLoginUser()
+            initData()
         }
+        initRecyclerView()
+    }
+
+    private fun initRecyclerView() {
+        rv_user_tab_choose.run {
+            adapter = userTabChooseAdapter
+            layoutManager = staggeredGridLayoutManager
+        }
+        val favoritesTabBean = UserTabChooseBean(0, R.mipmap.user_ic_favorites, "我的收藏")
+        val aboutTabBean = UserTabChooseBean(1, R.mipmap.user_ic_about, "关于")
+        val settingTabBean = UserTabChooseBean(2, R.mipmap.user_ic_setting, "设置")
+        val tabList: List<UserTabChooseBean> =
+            listOf(favoritesTabBean, aboutTabBean, settingTabBean)
+        userTabChooseAdapter.setList(tabList)
+        userTabChooseAdapter.setOnItemClickListener { adapter, view, position ->
+            when(tabList[position].id){
+                0 ->{
+
+                }
+                1 ->{
+                    ArouterPageManger.navigation(mActivity, ArouterUrlManage.USER_ABOUTACTIVITY)
+                }
+
+                1 ->{
+
+                }
+
+            }
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        initData()
+    }
+
+    override fun initData() {
+        super.initData()
+        dataUser = userService?.queryLoginUser()!!
+
+        dataUser?.let {
+            tv_name_first.text = it.username?.substring(0, 1) ?: ""
+            tv_username.text = it.username
+            tv_goto_login.visibility = View.INVISIBLE
+            tv_username.visibility = View.VISIBLE
+            tv_logout.visibility = View.VISIBLE
+        }
+
+        if (dataUser == null) {
+            tv_name_first.text = ""
+            tv_username.visibility = View.INVISIBLE
+            tv_goto_login.visibility = View.VISIBLE
+            tv_logout.visibility = View.INVISIBLE
+        }
+
     }
 
 }

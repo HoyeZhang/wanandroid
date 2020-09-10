@@ -10,6 +10,9 @@ class GlideImageLoader : BaseImageLoaderStrategy<ImageConfig> {
         ctx?.let { config.imageView?.let { it1 -> Glide.with(it).load(config.url).into(it1) } }
     }
 
+    fun loadImageByResourcesId(ctx: Context?, config: ImageConfig) {
+        ctx?.let { config.imageView?.let { it1 -> Glide.with(it).load(config.resourcesId).into(it1) } }
+    }
     override fun clear(ctx: Context?, config: ImageConfig) {
 
     }

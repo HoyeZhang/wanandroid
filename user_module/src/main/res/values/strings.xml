@@ -7,4 +7,6 @@
     <string name="user_input_password">请输入密码</string>
     <string name="user_input_account">请输入账号</string>
     <string name="user_logout">退出登录</string>
+    <string name="user_mail">ajqiaoke@foxmail.com</string>
+    <string name="user_code_url">https://github.com/ajjoke/wanandroid</string>
 </resources>
