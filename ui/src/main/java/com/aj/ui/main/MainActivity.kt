@@ -1,21 +1,43 @@
 package com.aj.ui.main
 
 
+import android.view.View
 import androidx.viewpager2.widget.ViewPager2
 import com.aj.base_module.ui.activity.BaseActivity
 import com.aj.base_module.utils.imageLoader.ImageLoader
 import com.aj.ui.R
 import com.aj.data_service.ArouterPageManger
 import com.aj.data_service.ArouterUrlManage
+import com.aj.data_service.Service.LoginService
+import com.aj.data_service.Service.SharedPreferencesService
+import com.aj.data_service.Service.UserService
+import com.aj.data_service.bean.DataUser
+
 import com.aj.ui.adapter.AdapterFragmentPager
+import com.alibaba.android.arouter.facade.annotation.Autowired
+import com.alibaba.android.arouter.launcher.ARouter
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomnavigation.LabelVisibilityMode
 
 import kotlinx.android.synthetic.main.activity_main_ui.*
 
 
-
 class MainActivity : BaseActivity() {
+
+    @Autowired(name = ArouterUrlManage.USER_LOGIN_SERVICE)
+    @JvmField
+    var loginService: LoginService? = null
+
+    @Autowired(name = ArouterUrlManage.DATAMODULEUSERSERVICE)
+    @JvmField
+    var userService: UserService? = null
+
+    @Autowired(name = ArouterUrlManage.DATAMODULESHAREPREFERENCESSERVICE)
+    @JvmField
+    var sharedPreferencesService: SharedPreferencesService? = null
+
+
+    private var dataUser: DataUser? = null
 
     /**
      * NavigationItemSelect监听
@@ -74,6 +96,18 @@ class MainActivity : BaseActivity() {
 
     }
 
+    override fun initData() {
+        super.initData()
+        ARouter.getInstance().inject(this)
+
+        if(sharedPreferencesService?.getIsLogin()!!){
+            dataUser = userService?.queryLoginUser()!!
+            dataUser?.let {
+                loginService?.userLogin(it.username,it.password)
+            }
+        }
+
+    }
     override fun getLayoutId(): Int  = R.layout.activity_main_ui;
 
 }

@@ -18,7 +18,7 @@ class LoginViewModel(private val repository: LoginRepository) : BaseViewModel() 
     var userService: UserService? = null
 
     fun login(username: String, password: String) {
-        ARouter.getInstance().inject(this);
+        ARouter.getInstance().inject(this)
         launch {
             loginBean.value = repository.login(username, password).data
 

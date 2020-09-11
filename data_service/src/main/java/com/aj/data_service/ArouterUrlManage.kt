@@ -27,6 +27,12 @@ object ArouterUrlManage {
     const val USER_FRAGEMNT = USERUI + "/UserFragment"
     const val USER_ABOUTACTIVITY = USERUI + "/AboutActivity"
     const val USER_ABOUTFRAGEMNT = USERUI + "/AboutFragment"
+
+    /**
+     *用户ui模块提供的服务
+     */
+    const val USER_LOGIN_SERVICE = USERUI + SERVICE + "/LoginService"
+
     /**
      *文章ui模块
      */ 
@@ -49,5 +55,7 @@ object ArouterUrlManage {
     const val DATAMODULEUSERSERVICE = SERVICE + DATA_MODULE +   "/user";
 
     const val DATAMODULEAPPCONTEXTSERVICE = SERVICE + DATA_MODULE +   "/appContext";
+
+    const val  DATAMODULESHAREPREFERENCESSERVICE = SERVICE + DATA_MODULE +   "/SharePreferences";
 
 }

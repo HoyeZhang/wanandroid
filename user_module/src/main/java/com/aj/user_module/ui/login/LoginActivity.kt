@@ -9,6 +9,7 @@ import com.aj.base_module.ui.viewmodel.BaseViewModel
 import com.aj.base_module.ui.viewmodel.initViewModel
 import com.aj.data_service.ArouterPageManger
 import com.aj.data_service.ArouterUrlManage
+import com.aj.data_service.Service.SharedPreferencesService
 import com.aj.data_service.Service.UserService
 import com.aj.data_service.bean.DataUser
 import com.aj.user_module.R
@@ -27,6 +28,11 @@ class LoginActivity : BaseDataBindVMActivity<UserActivityLoginBinding>(), View.O
     @Autowired(name = ArouterUrlManage.DATAMODULEUSERSERVICE)
     @JvmField
     var userService: UserService? = null
+
+    @Autowired(name = ArouterUrlManage.DATAMODULESHAREPREFERENCESSERVICE)
+    @JvmField
+    var sharedPreferencesService: SharedPreferencesService? = null
+
     private var dataUsers: ArrayList<DataUser>? = null
 
     override fun getLayoutId(): Int = R.layout.user_activity_login
@@ -41,7 +47,7 @@ class LoginActivity : BaseDataBindVMActivity<UserActivityLoginBinding>(), View.O
     }
 
     override fun initView() {
-        setSupportActionBar(toolbar);
+        setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationOnClickListener {
             this.finish()
@@ -49,6 +55,7 @@ class LoginActivity : BaseDataBindVMActivity<UserActivityLoginBinding>(), View.O
 
         mViewModel.loginBean.observe(this, Observer { loginBean ->
             if (loginBean != null) {
+                sharedPreferencesService?.setIsLogin(true)
                 finish()
             }
         })
@@ -58,6 +65,7 @@ class LoginActivity : BaseDataBindVMActivity<UserActivityLoginBinding>(), View.O
 
     override fun initData() {
         ARouter.getInstance().inject(this)
+        sharedPreferencesService?.setIsLogin(false)
         dataUsers = userService?.queryAll()!!
         if(dataUsers!!.size > 0){
             et_account.setText(dataUsers!![0].username)

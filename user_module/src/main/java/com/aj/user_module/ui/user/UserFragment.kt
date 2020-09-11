@@ -10,6 +10,7 @@ import com.aj.base_module.ui.viewmodel.BaseViewModel
 import com.aj.base_module.ui.viewmodel.initViewModel
 import com.aj.data_service.ArouterPageManger
 import com.aj.data_service.ArouterUrlManage
+import com.aj.data_service.Service.SharedPreferencesService
 import com.aj.data_service.Service.UserService
 import com.aj.data_service.bean.DataUser
 import com.aj.user_module.R
@@ -34,6 +35,10 @@ class UserFragment : BaseDataBindVMFragment<UserFragmentUserBinding>() {
     @Autowired(name = ArouterUrlManage.DATAMODULEUSERSERVICE)
     @JvmField
     var userService: UserService? = null
+
+    @Autowired(name = ArouterUrlManage.DATAMODULESHAREPREFERENCESSERVICE)
+    @JvmField
+    var sharedPreferencesService: SharedPreferencesService? = null
 
     private var dataUser: DataUser? = null
 
@@ -98,7 +103,7 @@ class UserFragment : BaseDataBindVMFragment<UserFragmentUserBinding>() {
                     ArouterPageManger.navigation(mActivity, ArouterUrlManage.USER_ABOUTACTIVITY)
                 }
 
-                1 ->{
+                2 ->{
 
                 }
 
@@ -113,17 +118,17 @@ class UserFragment : BaseDataBindVMFragment<UserFragmentUserBinding>() {
 
     override fun initData() {
         super.initData()
-        dataUser = userService?.queryLoginUser()!!
+        if(sharedPreferencesService?.getIsLogin()!!){
+            dataUser = userService?.queryLoginUser()!!
 
-        dataUser?.let {
-            tv_name_first.text = it.username?.substring(0, 1) ?: ""
-            tv_username.text = it.username
-            tv_goto_login.visibility = View.INVISIBLE
-            tv_username.visibility = View.VISIBLE
-            tv_logout.visibility = View.VISIBLE
-        }
-
-        if (dataUser == null) {
+            dataUser?.let {
+                tv_name_first.text = it.username?.substring(0, 1) ?: ""
+                tv_username.text = it.username
+                tv_goto_login.visibility = View.INVISIBLE
+                tv_username.visibility = View.VISIBLE
+                tv_logout.visibility = View.VISIBLE
+            }
+        }else{
             tv_name_first.text = ""
             tv_username.visibility = View.INVISIBLE
             tv_goto_login.visibility = View.VISIBLE

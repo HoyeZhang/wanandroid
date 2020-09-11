@@ -8,8 +8,10 @@ import com.aj.base_module.ui.viewmodel.BaseViewModel
 import com.aj.base_module.ui.viewmodel.initViewModel
 import com.aj.data_service.ArouterPageManger
 import com.aj.data_service.ArouterUrlManage
+import com.aj.data_service.Service.SharedPreferencesService
 import com.aj.user_module.R
 import com.aj.user_module.databinding.UserActivityRegisteredBinding
+import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.alibaba.android.arouter.facade.annotation.Route
 
 import kotlinx.android.synthetic.main.user_activity_registered.*
@@ -21,6 +23,9 @@ import kotlinx.android.synthetic.main.user_activity_registered.*
 @Route(path = ArouterUrlManage.USER_REGISTERED_ACTIVITY)
 class RegisteredActivity : BaseDataBindVMActivity<UserActivityRegisteredBinding>() , View.OnClickListener {
 
+    @Autowired(name = ArouterUrlManage.DATAMODULESHAREPREFERENCESSERVICE)
+    @JvmField
+    var sharedPreferencesService: SharedPreferencesService? = null
 
     override fun getLayoutId(): Int = R.layout.user_activity_registered
     private val mViewModel by lazy {
@@ -42,6 +47,7 @@ class RegisteredActivity : BaseDataBindVMActivity<UserActivityRegisteredBinding>
 
         mViewModel.loginBean.observe(this, Observer { loginBean ->
             if (loginBean != null) {
+                sharedPreferencesService?.setIsLogin(true)
                 finish()
             }
         })
