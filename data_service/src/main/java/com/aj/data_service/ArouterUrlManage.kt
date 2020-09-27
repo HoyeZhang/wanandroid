@@ -48,6 +48,8 @@ object ArouterUrlManage {
     const val ARTICLE_SYSTEM_CLASSIFY_FRAGMENT = ARTICLE_MODULE + "/SystemClassifyFragment"
     const val ARTICLE_SYSTEM_LIST_FRAGMENT = ARTICLE_MODULE + "/SystemListFragment"
     const val ARTICLE_SYSTEM_CLASSIFY_ACTIVITY = ARTICLE_MODULE + "/SystemClassifyActivity"
+    const val ARTICLE_SEARCH_ACTIVITY = ARTICLE_MODULE + "/SearchActivity"
+    const val ARTICLE_SEARCH_FRAGMENT = ARTICLE_MODULE + "/SearchFragment"
     /**
      *数据模块
      */

@@ -60,4 +60,11 @@ interface WanAndroidApis {
     @GET("article/list/{pageNum}/json")
     fun getSystemTreeArticle(@Path("pageNum") pageNum: Int,@Query("cid")cid: Int): Call<BaseResponse<ArticleResponseBody>>
 
+
+    /**
+     * 搜索
+     */
+    @POST("article/query/{pageNum}/json")
+    fun search(@Path("pageNum") pageNum: Int, @Field("k") k: String): Call<BaseResponse<ArticleResponseBody>>
+
 }
