@@ -6,102 +6,119 @@
     <data>
 
         <import type="com.aj.base_module.utils.DateUtils" />
+
         <import type="android.text.TextUtils" />
+
         <import type="android.text.Html" />
+
         <import type="android.view.View" />
+
         <variable
             name="article"
             type="com.aj.article_module.bean.Article" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:paddingLeft="@dimen/base_dp_10dp"
-        android:paddingRight="@dimen/base_dp_10dp"
-        android:paddingTop="@dimen/base_dp_5dp"
-        android:paddingBottom="@dimen/base_dp_5dp"
         android:layout_marginLeft="@dimen/base_dp_5dp"
-        android:layout_marginRight="@dimen/base_dp_5dp"
         android:layout_marginTop="@dimen/base_dp_2dp"
+        android:layout_marginRight="@dimen/base_dp_5dp"
         android:layout_marginBottom="@dimen/base_dp_2dp"
         android:background="@drawable/article_bg_white_round_5"
         android:elevation="@dimen/base_dp_2dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/base_dp_10dp"
+        android:paddingTop="@dimen/base_dp_5dp"
+        android:paddingRight="@dimen/base_dp_10dp"
+        android:paddingBottom="@dimen/base_dp_5dp"
+        android:gravity="center">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
 
-        <TextView
-            android:id="@+id/tv_title"
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:text="@{Html.fromHtml(article.title)}"
+                android:textColor="@color/base_text_main_color"
+                android:textSize="@dimen/base_text_sp_17"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="标题" />
+
+            <View
+                android:id="@+id/v_line"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/base_dp_1dp"
+                android:layout_marginTop="@dimen/base_dp_2dp"
+                android:background="@color/base_color_bg"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_title" />
+
+            <TextView
+                android:id="@+id/tv_tab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/base_dp_3dp"
+                android:background="@drawable/article_bg_theme_round_2"
+                android:gravity="center"
+                android:paddingLeft="@dimen/base_dp_2dp"
+                android:paddingTop="1dp"
+                android:paddingRight="@dimen/base_dp_2dp"
+                android:paddingBottom="1dp"
+                android:text="@{article.superChapterName}"
+                android:textColor="@color/base_colorWhite"
+                android:textSize="@dimen/base_text_sp_14"
+                android:visibility="@{!TextUtils.isEmpty(article.superChapterName) ? View.VISIBLE : View.GONE}"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/v_line"
+                tools:text="tag" />
+
+            <TextView
+                android:id="@+id/tv_form"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/base_dp_10dp"
+                android:layout_marginTop="@dimen/base_dp_3dp"
+                android:text="@{!TextUtils.isEmpty(article.shareUser) ? article.shareUser: article.author}"
+                android:textColor="@color/base_text_gray_color"
+                android:textSize="@dimen/base_text_sp_14"
+                app:layout_constraintLeft_toRightOf="@+id/tv_tab"
+                app:layout_constraintTop_toBottomOf="@+id/v_line"
+                tools:text="来源" />
+
+
+            <TextView
+                android:id="@+id/tv_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_marginTop="@dimen/base_dp_3dp"
+                android:text="@{DateUtils.INSTANCE.getDate2String(article.publishTime)}"
+                android:textColor="@color/base_text_gray_color"
+                android:textSize="@dimen/base_text_sp_14"
+                app:layout_constraintLeft_toRightOf="@+id/tv_form"
+                app:layout_constraintTop_toBottomOf="@+id/v_line"
+                tools:text="时间" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageView
+            android:id="@+id/iv_favorite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:maxLines="2"
-            android:text="@{Html.fromHtml(article.title)}"
-            android:textColor="@color/base_text_main_color"
-            android:textSize="@dimen/base_text_sp_17"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="标题" />
-
-        <View
-            android:id="@+id/v_line"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/base_dp_1dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_title"
-            android:layout_marginTop="@dimen/base_dp_2dp"
-            android:background="@color/base_color_bg"/>
-        <TextView
-            android:id="@+id/tv_tab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{article.superChapterName}"
-            android:textColor="@color/base_colorWhite"
-            android:textSize="@dimen/base_text_sp_14"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/v_line"
-            android:background="@drawable/article_bg_theme_round_2"
-            android:paddingLeft="@dimen/base_dp_2dp"
-            android:paddingRight="@dimen/base_dp_2dp"
-            android:paddingTop="1dp"
-            android:paddingBottom="1dp"
-            android:gravity="center"
-            android:layout_marginTop="@dimen/base_dp_3dp"
-            android:visibility="@{!TextUtils.isEmpty(article.superChapterName) ? View.VISIBLE : View.GONE}"
-            tools:text="tag"
-            />
-
-        <TextView
-            android:id="@+id/tv_form"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{!TextUtils.isEmpty(article.shareUser) ? article.shareUser: article.author}"
-            android:textColor="@color/base_text_gray_color"
-            android:textSize="@dimen/base_text_sp_14"
-            app:layout_constraintLeft_toRightOf="@+id/tv_tab"
-            app:layout_constraintTop_toBottomOf="@+id/v_line"
-            android:layout_marginLeft="@dimen/base_dp_10dp"
-            android:layout_marginTop="@dimen/base_dp_3dp"
-            tools:text="来源" />
-
-
-        <TextView
-            android:id="@+id/tv_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{DateUtils.INSTANCE.getDate2String(article.publishTime)}"
-            android:textColor="@color/base_text_gray_color"
-            android:textSize="@dimen/base_text_sp_14"
-            app:layout_constraintLeft_toRightOf="@+id/tv_form"
-            app:layout_constraintTop_toBottomOf="@+id/v_line"
-            android:layout_marginTop="@dimen/base_dp_3dp"
-            android:layout_marginLeft="@dimen/dp_10"
-            tools:text="时间" />
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
+            android:src="@drawable/article_ic_favorite_normal_24" />
+    </LinearLayout>
 
 </layout>

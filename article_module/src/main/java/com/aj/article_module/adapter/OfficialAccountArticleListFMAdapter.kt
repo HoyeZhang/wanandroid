@@ -1,27 +1,25 @@
 package com.aj.article_module.adapter
 
 import android.graphics.drawable.GradientDrawable
-import android.os.Build
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageView
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.aj.article_module.R
 import com.aj.article_module.bean.Article
-import com.aj.article_module.bean.ArticleResponseBody
-import com.aj.article_module.bean.OfficialAccountItem
 import com.aj.article_module.bean.PageDataInfo
 import com.aj.article_module.databinding.ArticleItemArticlesBinding
-import com.aj.article_module.databinding.ArticleOfficialaccountItemBinding
-import com.aj.article_module.databinding.ArticleOfficialaccountListItemBinding
 import com.aj.data_service.ArouterPageManger
 import com.aj.data_service.ArouterUrlManage
 import com.chad.library.adapter.base.BaseQuickAdapter
-import com.chad.library.adapter.base.listener.OnItemClickListener
+import com.chad.library.adapter.base.listener.OnItemChildClickListener
 import com.chad.library.adapter.base.module.LoadMoreModule
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import kotlin.random.Random
+
 
 /**
  *
@@ -52,22 +50,43 @@ class OfficialAccountArticleListFMAdapter : BaseQuickAdapter<Article, BaseViewHo
         DataBindingUtil.bind<ViewDataBinding>(viewHolder.itemView)
         setOnItemClickListener { _, _, position ->
             val bundle = Bundle()
-            bundle.putString(PageDataInfo.articleUrl,data[position].link)
-            bundle.putString(PageDataInfo.articleTitle,data[position].title)
-            ArouterPageManger.navigationWithParams(context, ArouterUrlManage.ARTICLE_ARTICLE_DETAIL,bundle)
+            bundle.putString(PageDataInfo.articleUrl, data[position].link)
+            bundle.putString(PageDataInfo.articleTitle, data[position].title)
+            ArouterPageManger.navigationWithParams(
+                context,
+                ArouterUrlManage.ARTICLE_ARTICLE_DETAIL,
+                bundle
+            )
+        }
+
+        setOnItemChildClickListener{ _: BaseQuickAdapter<Any?, BaseViewHolder>, view: View, _: Int ->
+            when(view.id){
+
+            }
         }
     }
 
     override fun convert(holder: BaseViewHolder, item: Article) {
         // 获取 Binding
-        val articleDamaging : ArticleItemArticlesBinding? =
+        val articleDamaging: ArticleItemArticlesBinding? =
             DataBindingUtil.getBinding(holder.itemView)
         if (articleDamaging != null) {
             articleDamaging.article = item
         }
         val tvTab = holder.getView<View>(R.id.tv_tab)
-        val gradientDrawable : GradientDrawable = tvTab.background as GradientDrawable
-        gradientDrawable.setColor(ContextCompat.getColor(context,colors[Random.nextInt(colors.size )]))
+        val gradientDrawable: GradientDrawable = tvTab.background as GradientDrawable
+        gradientDrawable.setColor(
+            ContextCompat.getColor(
+                context,
+                colors[Random.nextInt(colors.size)]
+            )
+        )
+        val ivFavorite = holder.getView<ImageView>(R.id.iv_favorite)
+        if (item.collect) {
+            ivFavorite.setImageResource((R.drawable.article_ic_favorite_select_24))
+        }else{
+            ivFavorite.setImageResource((R.drawable.article_ic_favorite_normal_24))
+        }
 
     }
 

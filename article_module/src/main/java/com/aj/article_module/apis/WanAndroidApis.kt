@@ -67,4 +67,6 @@ interface WanAndroidApis {
     @POST("article/query/{pageNum}/json")
     fun search(@Path("pageNum") pageNum: Int, @Field("k") k: String): Call<BaseResponse<ArticleResponseBody>>
 
+    @POST("lg/collect/{id}/json")
+    fun addCollectArticle(@Path("id") id: Int): Call<BaseResponse<ArticleResponseBody>>
 }

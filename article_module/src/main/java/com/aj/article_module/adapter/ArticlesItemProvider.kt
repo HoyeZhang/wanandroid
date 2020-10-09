@@ -6,6 +6,7 @@ import android.graphics.drawable.GradientDrawable
 import android.os.Build
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
@@ -65,7 +66,12 @@ class ArticlesItemProvider : BaseItemProvider<HomeListDataType>() {
         val gradientDrawable : GradientDrawable = tvTab.background as GradientDrawable
         gradientDrawable.setColor(ContextCompatUtils.getColor(context,colors[Random.nextInt(colors.size )]))
 
-
+        val ivFavorite = helper.getView<ImageView>(R.id.iv_favorite)
+        if (item.collect) {
+            ivFavorite.setImageResource((R.drawable.article_ic_favorite_select_24))
+        }else{
+            ivFavorite.setImageResource((R.drawable.article_ic_favorite_normal_24))
+        }
     }
 
     override fun onClick(
